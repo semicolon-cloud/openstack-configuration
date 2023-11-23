@@ -72,7 +72,7 @@ fi
 echo $installation_token
 
 githubToken="$installation_token"
-githubUsername="semicolon-configbot"
+githubUsername="semicolon-configbot[bot]"
 githubId="$app_id"
 githubEmail="${githubId}+${githubUsername}[bot]@users.noreply.github.com"
  
