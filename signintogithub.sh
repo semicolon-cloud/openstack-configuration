@@ -72,11 +72,11 @@ fi
 echo $installation_token
 
 githubToken="$installation_token"
-githubUsername="semicolon-configbot[bot]"
+githubUsername="semicolon-configbot"
 githubId="$app_id"
 githubEmail="${githubId}+${githubUsername}[bot]@users.noreply.github.com"
  
  
 git remote set-url origin $(git config remote.origin.url | sed "s/github.com/${githubUsername}:${githubToken}@github.com/g")
-git config --global user.name "${githubUsername}"
+git config --global user.name "${githubUsername}[bot]"
 git config --global user.email "${githubEmail}"
