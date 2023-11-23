@@ -44,7 +44,6 @@ installation_list_response=$(curl -s -H "Authorization: Bearer ${token}" \
     -H "Accept: application/vnd.github.machine-man-preview+json" \
     https://api.github.com/app/installations)
  
-echo "$installation_list_response"
 installation_id=$(echo $installation_list_response | jq '.[] | select(.app_id=='${app_id}')' | jq -r '.id')
  
 if [ -z "$installation_id" ];
