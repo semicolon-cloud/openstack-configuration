@@ -1,0 +1,4 @@
+user_secrets.yml
+pki/
+ssh_keypairs/
+ansible_facts/
