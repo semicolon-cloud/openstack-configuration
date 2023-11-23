@@ -3,3 +3,4 @@ pki/
 ssh_keypairs/
 ansible_facts/
 githubPrivKey.pem
+signintogithub.sh
