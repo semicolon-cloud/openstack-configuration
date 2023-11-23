@@ -217,17 +217,31 @@ haproxy_horizon_csp: >
   upgrade-insecure-requests;
   style-src 'self' 'unsafe-inline';
   script-src 'self' 'unsafe-inline' 'unsafe-eval';
-  child-src 'self' {{ external_lb_vip_address }}:{{ nova_spice_html5proxy_base_port }} {{ external_lb_vip_address }}:{{ nova_novncproxy_port }} {{ external_lb_vip_address }}:{{ nova_serialconsoleproxy_port }};
-  frame-src 'self' {{ external_lb_vip_address }}:{{ nova_spice_html5proxy_base_port }} {{ external_lb_vip_address }}:{{ nova_novncproxy_port }} {{ external_lb_vip_address }}:{{ nova_serialconsoleproxy_port }};
-  connect-src 'self' {{ external_lb_vip_address }}:* wss://{{ external_lb_vip_address }}:{{ ironic_console_port }} wss://{{ external_lb_vip_address }}:6784;
+  child-src 'self' spice.compute.cloud.seda.club novnc.compute.cloud.seda.club serialconsole.compute.cloud.seda.club;
+  frame-src 'self' spice.compute.cloud.seda.club novnc.compute.cloud.seda.club serialconsole.compute.cloud.seda.club;
+  connect-src 'self' cloud.seda.club:* wss://{{ external_lb_vip_address }}:{{ ironic_console_port }} wss://ws.container.cloud.seda.club;
   img-src 'self' data:;
   worker-src blob:;
   "
 
-placement_service_publicurl: "{{ placement_service_publicuri_proto }}://{{ external_lb_vip_address }}/placement"
-placement_service_internalurl: "{{ placement_service_internaluri_proto }}://{{ internal_lb_vip_address }}/placement"
-placement_service_adminurl: "{{ placement_service_adminuri_proto }}://{{ internal_lb_vip_address }}/placement"
+placement_service_publicurl: "https://placement.cloud.seda.club"
+zun_service_publicuri: "https://container.cloud.seda.club"
+zun_wsproxy_base_uri: "wss://ws.container.cloud.seda.club"
 
-zun_service_publicuri: "{{ zun_service_publicuri_proto }}://{{ external_lb_vip_address }}:{{ zun_service_port }}/zun"
-zun_service_adminuri: "{{ zun_service_adminuri_proto }}://{{ internal_lb_vip_address }}:{{ zun_service_port }}/zun"
-zun_service_internaluri: "{{ zun_service_internaluri_proto }}://{{ internal_lb_vip_address }}:{{ zun_service_port }}/zun"
+nova_service_publicuri: "https://compute.cloud.seda.club"
+
+nova_spice_html5proxy_base_uri: "https://spice.compute.cloud.seda.club"
+nova_novncproxy_base_uri: "https://novnc.compute.cloud.seda.club"
+nova_serialconsoleproxy_base_uri: "ws://serialconsole.compute.cloud.seda.club"
+
+neutron_service_publicuri: "https://network.cloud.seda.club"
+keystone_service_publicuri: "https://identity.cloud.seda.club"
+heat_service_publicuri: "https://orchestration.cloud.seda.club"
+heat_cfn_service_publicuri: "https://cloudformation.cloud.seda.club"
+heat_waitcondition_server_uri: "https://cloudformation.cloud.seda.club"
+heat_metadata_server_url: "https://cloudformation.cloud.seda.club"
+glance_service_publicuri: "https://image.cloud.seda.club"
+
+cinder_service_publicuri: "https://volume.cloud.seda.club"
+cinder_service_v2_publicuri: "https://volume.cloud.seda.club"
+cinder_service_v3_publicuri: "https://volume.cloud.seda.club"
