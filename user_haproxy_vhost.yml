@@ -55,6 +55,7 @@ haproxy_horizon_service:
       entries:
         - 'cloud.seda.club horizon-back'
 
+openstack_service_accept_both_protocols: false
 haproxy_placement_service:
   haproxy_backend_only: true
   haproxy_service_name: placement
@@ -88,6 +89,7 @@ haproxy_zun_api_service:
       entries:
         - 'container.cloud.seda.club zun_api-back'
 
+zun_accept_both_protocols: false
 haproxy_zun_console_service:
   haproxy_backend_only: true
   haproxy_service_name: zun_console
