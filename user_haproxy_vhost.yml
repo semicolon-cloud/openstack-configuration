@@ -58,8 +58,8 @@ haproxy_horizon_service:
 haproxy_placement_service:
   haproxy_service_name: placement
   haproxy_backend_nodes: "{{ groups['placement_all'] | default([]) }}"
-  haproxy_ssl: "{{ haproxy_ssl }}"
-  haproxy_ssl_all_vips: "{{ haproxy_ssl_all_vips }}"
+  # haproxy_ssl: "{{ haproxy_ssl }}"
+  # haproxy_ssl_all_vips: "{{ haproxy_ssl_all_vips }}"
   haproxy_bind: "{{ [haproxy_bind_internal_lb_vip_address | default(internal_lb_vip_address)] }}"
   haproxy_port: 8780
   haproxy_balance_type: http
@@ -78,8 +78,8 @@ haproxy_placement_service:
 haproxy_zun_api_service:
   haproxy_service_name: zun_api
   haproxy_backend_nodes: "{{ groups['zun_api'] | default([]) }}"
-  haproxy_ssl: "{{ haproxy_ssl }}"
-  haproxy_ssl_all_vips: "{{ haproxy_ssl_all_vips }}"
+  # haproxy_ssl: "{{ haproxy_ssl }}"
+  # haproxy_ssl_all_vips: "{{ haproxy_ssl_all_vips }}"
   haproxy_bind: "{{ [haproxy_bind_internal_lb_vip_address | default(internal_lb_vip_address)] }}"
   haproxy_port: 9517
   haproxy_balance_type: http
@@ -96,8 +96,8 @@ haproxy_zun_api_service:
 haproxy_zun_console_service:
   haproxy_service_name: zun_console
   haproxy_backend_nodes: "{{ groups['zun_api'] | default([]) }}"
-  haproxy_ssl: "{{ haproxy_ssl }}"
-  haproxy_ssl_all_vips: "{{ haproxy_ssl_all_vips }}"
+  # haproxy_ssl: "{{ haproxy_ssl }}"
+  # haproxy_ssl_all_vips: "{{ haproxy_ssl_all_vips }}"
   haproxy_port: 6784
   haproxy_bind: "{{ [haproxy_bind_internal_lb_vip_address | default(internal_lb_vip_address)] }}"
   haproxy_balance_type: http
