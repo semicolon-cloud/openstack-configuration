@@ -138,7 +138,7 @@ haproxy_nova_api_compute_service:
   haproxy_map_entries:
     - name: route
       entries:
-        - 'compute.cloud.seda.club nova_api_os_compute-backend'
+        - 'compute.cloud.seda.club nova_api_os_compute-back'
 
 haproxy_nova_spice_console_service:
   haproxy_service_name: nova_spice_console
@@ -161,7 +161,7 @@ haproxy_nova_spice_console_service:
   haproxy_map_entries:
     - name: route
       entries:
-        - 'spice.compute.cloud.seda.club nova_spice_console-backend'
+        - 'spice.compute.cloud.seda.club nova_spice_console-back'
 
 haproxy_nova_serial_console_service:
   haproxy_service_name: nova_serial_console
@@ -185,7 +185,7 @@ haproxy_nova_serial_console_service:
   haproxy_map_entries:
     - name: route
       entries:
-        - 'serialconsole.compute.cloud.seda.club nova_serial_console-backend'
+        - 'serialconsole.compute.cloud.seda.club nova_serial_console-back'
 
 
 haproxy_nova_novnc_console_service:
@@ -209,7 +209,7 @@ haproxy_nova_novnc_console_service:
   haproxy_map_entries:
     - name: route
       entries:
-        - 'novnc.compute.cloud.seda.club nova_novnc_console-backend'
+        - 'novnc.compute.cloud.seda.club nova_novnc_console-back'
 
 haproxy_neutron_server_service:
   haproxy_service_name: neutron_server
@@ -228,7 +228,7 @@ haproxy_neutron_server_service:
   haproxy_map_entries:
     - name: route
       entries:
-        - 'network.cloud.seda.club neutron_server-backend'
+        - 'network.cloud.seda.club neutron_server-back'
 
 haproxy_keystone_service:
   haproxy_service_name: keystone_service
@@ -247,7 +247,7 @@ haproxy_keystone_service:
   haproxy_map_entries:
     - name: route
       entries:
-        - 'identity.cloud.seda.club keystone_service-backend'
+        - 'identity.cloud.seda.club keystone_service-back'
 
 haproxy_heat_api_service:
   haproxy_service_name: heat_api
@@ -266,7 +266,7 @@ haproxy_heat_api_service:
   haproxy_map_entries:
     - name: route
       entries:
-        - 'orchestration.cloud.seda.club heat_api-backend'
+        - 'orchestration.cloud.seda.club heat_api-back'
 
 haproxy_heat_api_cfn_service:
   haproxy_service_name: heat_api_cfn
@@ -285,7 +285,7 @@ haproxy_heat_api_cfn_service:
   haproxy_map_entries:
     - name: route
       entries:
-        - 'cloudformation.cloud.seda.club heat_api_cfn-backend'
+        - 'cloudformation.cloud.seda.club heat_api_cfn-back'
   
 haproxy_glance_api_service:
   haproxy_service_name: glance_api
@@ -305,7 +305,7 @@ haproxy_glance_api_service:
   haproxy_map_entries:
     - name: route
       entries:
-        - 'image.cloud.seda.club glance_api-backend'
+        - 'image.cloud.seda.club glance_api-back'
   
 haproxy_cinder_api_service:
   haproxy_service_name: cinder_api
@@ -324,4 +324,4 @@ haproxy_cinder_api_service:
   haproxy_map_entries:
     - name: route
       entries:
-        - 'volume.cloud.seda.club cinder_api-backend'
+        - 'volume.cloud.seda.club cinder_api-back'
