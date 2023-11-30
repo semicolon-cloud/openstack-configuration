@@ -61,6 +61,7 @@ haproxy_placement_service:
   haproxy_service_name: placement
   haproxy_backend_nodes: "{{ groups['placement_all'] | default([]) }}"
   haproxy_balance_type: http
+  haproxy_backend_port: 8780
   haproxy_backend_options:
     - "httpchk GET / HTTP/1.0\\r\\nUser-agent:\\ osa-haproxy-healthcheck"
   haproxy_backend_ssl: "{{ placement_backend_ssl | default(openstack_service_backend_ssl) }}"
@@ -78,6 +79,7 @@ haproxy_zun_api_service:
   haproxy_service_name: zun_api
   haproxy_backend_nodes: "{{ groups['zun_api'] | default([]) }}"
   haproxy_balance_type: http
+  haproxy_backend_port: 9517
   haproxy_backend_options:
       - "httpchk GET /healthcheck HTTP/1.0\\r\\nUser-agent:\\ osa-haproxy-healthcheck"
   haproxy_backend_ssl: "{{ zun_backend_ssl | default(openstack_service_backend_ssl) }}"
@@ -97,6 +99,7 @@ haproxy_zun_console_service:
   haproxy_balance_type: http
   haproxy_timeout_client: 60m
   haproxy_timeout_server: 60m
+  haproxy_backend_port: 6784
   haproxy_balance_alg: source
   haproxy_backend_options:
     - "httpchk HEAD / HTTP/1.0\\r\\nUser-agent:\\ osa-haproxy-healthcheck"
