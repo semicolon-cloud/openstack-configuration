@@ -252,5 +252,5 @@ zun_zun_conf_overrides:
   websocket_proxy:
     allowed_origins:
     - 'ws.container.cloud.seda.club'
-    - 'https://cloud.seda.club'
+    - 'cloud.seda.club'
     
