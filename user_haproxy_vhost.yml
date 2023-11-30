@@ -118,8 +118,3 @@ haproxy_zun_console_service:
     - name: route
       entries:
         - 'ws.container.cloud.seda.club zun_console-back'
-
-zun_zun_conf_overrides:
-  websocket_proxy:
-    allowed_origins:
-    - 'ws.container.cloud.seda.club'

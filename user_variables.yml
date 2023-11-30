@@ -245,3 +245,10 @@ glance_service_publicuri: "https://image.cloud.seda.club"
 cinder_service_publicuri: "https://volume.cloud.seda.club"
 cinder_service_v2_publicuri: "https://volume.cloud.seda.club"
 cinder_service_v3_publicuri: "https://volume.cloud.seda.club"
+
+
+
+zun_zun_conf_overrides:
+  websocket_proxy:
+    allowed_origins:
+    - 'ws.container.cloud.seda.club'
