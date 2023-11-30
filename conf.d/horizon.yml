@@ -1,0 +1,8 @@
+haproxy_horizon_service:
+  haproxy_backend_only: true 
+  haproxy_map_entries:
+    - name: base_regex
+      order: 99
+      #match any requests to the horizon backend
+      entries:
+        - 'cloud.seda.club horizon-back'
