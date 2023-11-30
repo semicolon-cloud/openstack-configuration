@@ -55,7 +55,7 @@ haproxy_horizon_service:
       entries:
         - 'cloud.seda.club horizon-back'
 
-openstack_service_accept_both_protocols: false
+placement_accept_both_protocols: false
 haproxy_placement_service:
   haproxy_backend_only: true
   haproxy_service_name: placement
