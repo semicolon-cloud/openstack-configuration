@@ -247,6 +247,8 @@ cinder_service_v2_publicuri: "https://volume.cloud.seda.club"
 cinder_service_v3_publicuri: "https://volume.cloud.seda.club"
 
 
+designate_service_publicuri: "https://designate.cloud.seda.club"
+
 
 zun_zun_conf_overrides:
   websocket_proxy:

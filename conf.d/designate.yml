@@ -1,0 +1,9 @@
+# The infra nodes that will be running the dnsaas services
+dnsaas_hosts:
+  inst-6c3be5190a72:
+    ip: 172.29.236.11
+  inst-6c3be511f4b0:
+    ip: 172.29.236.14
+  inst-6c3be511f46b:
+    ip: 172.29.236.15
+
