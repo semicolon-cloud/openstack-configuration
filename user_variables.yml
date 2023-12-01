@@ -285,4 +285,4 @@ designate_rndc_keys:
   - name: "rndc-key"
     file: /etc/designate/rndc.key
     algorithm: "hmac-sha256"
-    secret: {{ sedaclub_rndc_key }}
+    secret: "{{ sedaclub_rndc_key }}"
