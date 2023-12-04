@@ -270,7 +270,11 @@ designate_pools_yaml:
       - type: bind9
         description: BIND9 Server
         masters:
-          - host: 172.29.236.11
+          - host: 172.29.237.134
+            port: 5354
+          - host: 172.29.237.228
+            port: 5354
+          - host: 172.29.237.238
             port: 5354
         options:
           host: 172.29.236.1
