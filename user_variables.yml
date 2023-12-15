@@ -257,7 +257,7 @@ zun_zun_conf_overrides:
     - 'cloud.seda.club'
 
 designate_pools_yaml:
-  - name: "internal"
+  - name: "default"
     description: Internal Schoolnet Pool
     attributes: {}
     ns_records:
