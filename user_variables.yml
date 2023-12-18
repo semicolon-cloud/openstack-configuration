@@ -283,7 +283,7 @@ designate_pools_yaml:
           rndc_host: 172.29.236.1
           rndc_key_file: /etc/designate/rndc.key
           rndc_port: 953
-          view: localsedaclub
+          view: school
 
 ## rndc keys for authenticating with bind9
 # define this to create as many key files as are required
