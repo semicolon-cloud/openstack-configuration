@@ -284,6 +284,33 @@ designate_pools_yaml:
           rndc_key_file: /etc/designate/rndc.key
           rndc_port: 953
           view: school
+  - name: "external"
+    description: External Schoolnet Pool
+    attributes:
+      facing: external
+    ns_records:
+      - hostname: ns1.seda.club.
+        priority: 1
+    nameservers:
+      - host: seda.club
+        port: 53
+    targets:
+      - type: bind9
+        description: BIND9 Server
+        masters:
+          - host: 172.29.237.134
+            port: 5354
+          - host: 172.29.237.228
+            port: 5354
+          - host: 172.29.237.238
+            port: 5354
+        options:
+          host: 172.29.236.1
+          port: 53
+          rndc_host: 172.29.236.1
+          rndc_key_file: /etc/designate/rndc.key
+          rndc_port: 953
+          view: rest
 
 ## rndc keys for authenticating with bind9
 # define this to create as many key files as are required
