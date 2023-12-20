@@ -207,6 +207,24 @@ requirements_git_install_branch: e3c5bff0b26ffc6388ce0c72388b1b9b41f7f2e8
 zun_kuryr_system_user_name: root
 zun_kuryr_system_group_name: root
 
+haproxy_ssl_letsencrypt_enable: true
+haproxy_ssl_letsencrypt_email: cyoung06@naver.com
+haproxy_ssl_letsencrypt_domains: 
+- cloud.seda.club
+- cloudformation.cloud.seda.club
+- compute.cloud.seda.club
+- container.cloud.seda.club
+- identity.cloud.seda.club
+- image.cloud.seda.club
+- network.cloud.seda.club
+- novnc.compute.cloud.seda.club
+- orchestration.cloud.seda.club
+- placement.cloud.seda.club
+- serialconsole.compute.cloud.seda.club
+- spice.compute.cloud.seda.club
+- volume.cloud.seda.club
+- ws.container.cloud.seda.club
+- designate.cloud.seda.club
 
 haproxy_security_headers_csp_report_only: false
 haproxy_horizon_csp: >

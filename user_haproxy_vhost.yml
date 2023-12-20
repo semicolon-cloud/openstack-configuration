@@ -34,6 +34,20 @@ haproxy_security_txt_service:
     - name: base_regex
       entries:
         - '.*/security.txt security_txt-back'
+        
+haproxy_letsencrypt_service:
+  haproxy_service_name: letsencrypt
+  haproxy_backend_nodes: "{{ groups['haproxy_all'] }}"
+  backend_rise: 1
+  backend_fall: 5
+  interval: 4000
+  haproxy_bind:
+    - 127.0.0.1
+  haproxy_port: "{{ haproxy_ssl_letsencrypt_certbot_backend_port }}"
+  haproxy_balance_type: http
+  haproxy_service_enabled: "{{ (haproxy_ssl_letsencrypt_enable | bool and haproxy_ssl | bool) }}"
+
+
 
 haproxy_horizon_service:
   haproxy_backend_only: true    #only describe the backends, frontend is in `base` via haproxy_all group vars
