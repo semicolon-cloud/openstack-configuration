@@ -308,7 +308,7 @@ designate_pools_yaml:
           host: 172.29.236.1
           port: 53
           rndc_host: 172.29.236.1
-          rndc_key_file: /etc/designate/rndc.key
+          rndc_key_file: /etc/designate/rndc2.key
           rndc_port: 953
           view: rest
 
@@ -319,3 +319,7 @@ designate_rndc_keys:
     file: /etc/designate/rndc.key
     algorithm: "hmac-sha256"
     secret: "{{ sedaclub_rndc_key }}"
+  - name: "rndc-key2"
+    file: /etc/designate/rndc2.key
+    algorithm: "hmac-sha256"
+    secret: "{{ remote_sedaclub_rndc_key }}"
