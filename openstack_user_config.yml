@@ -719,6 +719,18 @@ storage_hosts:
 #
 # Use the LVM iSCSI backend in availability zone 'cinderAZ_1':
 #
+  inst-6c3b35190a1f:
+    ip: 172.29.236.18
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_1
+      cinder_default_availability_zone: cinderAZ_1
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "172.29.244.18"
+        limit_container_types: cinder_volume
   inst-6c3be5190a66:
     ip: 172.29.236.17
     container_vars:
@@ -730,6 +742,18 @@ storage_hosts:
           volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
           volume_group: cinder-volumes
           iscsi_ip_address: "172.29.244.17"
+        limit_container_types: cinder_volume
+  inst-10604b858bb0:
+    ip: 172.29.236.16
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_1
+      cinder_default_availability_zone: cinderAZ_1
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "172.29.244.16"
         limit_container_types: cinder_volume
   inst-6c3be511f46b:
     ip: 172.29.236.15
@@ -755,6 +779,33 @@ storage_hosts:
           volume_group: cinder-volumes
           iscsi_ip_address: "172.29.244.14"
         limit_container_types: cinder_volume
+  
+  inst-6c3be511f4ba:
+    ip: 172.29.236.13
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_1
+      cinder_default_availability_zone: cinderAZ_1
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "172.29.244.13"
+        limit_container_types: cinder_volume
+  
+  inst-6c3be5190a14:
+    ip: 172.29.236.12
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_1
+      cinder_default_availability_zone: cinderAZ_1
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "172.29.244.12"
+        limit_container_types: cinder_volume
+  
   inst-6c3be5190a72:
     ip: 172.29.236.11
     container_vars:
@@ -766,6 +817,66 @@ storage_hosts:
           volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
           volume_group: cinder-volumes
           iscsi_ip_address: "172.29.244.11"
+        limit_container_types: cinder_volume
+  inst-2c44fd1862cd:
+    ip: 172.29.236.9
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_1
+      cinder_default_availability_zone: cinderAZ_1
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "172.29.244.9"
+        limit_container_types: cinder_volume
+  inst-6c3be5190a16:
+    ip: 172.29.236.8
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_1
+      cinder_default_availability_zone: cinderAZ_1
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "172.29.244.8"
+        limit_container_types: cinder_volume
+  inst-6c3be5165177:
+    ip: 172.29.236.7
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_1
+      cinder_default_availability_zone: cinderAZ_1
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "172.29.244.7"
+        limit_container_types: cinder_volume
+  inst-6c3be5165172:
+    ip: 172.29.236.6
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_1
+      cinder_default_availability_zone: cinderAZ_1
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "172.29.244.6"
+        limit_container_types: cinder_volume
+  inst-6c3be51909f3:
+    ip: 172.29.236.5
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_1
+      cinder_default_availability_zone: cinderAZ_1
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "172.29.244.5"
         limit_container_types: cinder_volume
 #
 # Example:
