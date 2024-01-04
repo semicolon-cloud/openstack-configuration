@@ -4,7 +4,7 @@ global_overrides:
     weight: 100
     min_part_hours: 1
     repl_number: 3
-    storage_network: 'br-storage'
+    storage_network: 'ansible_br-storage'
     # replication_network: 'br-repl'
     drives:
       - name: sdb
