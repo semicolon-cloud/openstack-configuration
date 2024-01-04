@@ -225,6 +225,7 @@ haproxy_ssl_letsencrypt_domains:
 - volume.cloud.seda.club
 - ws.container.cloud.seda.club
 - designate.cloud.seda.club
+- swift.cloud.seda.cclub
 
 haproxy_security_headers_csp_report_only: false
 haproxy_horizon_csp: >
