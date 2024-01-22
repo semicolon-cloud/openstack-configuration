@@ -354,3 +354,14 @@ glance_swift_store_endpoint_type: internalURL
 glance_swift_store_key: '{{ glance_service_password }}'
 glance_swift_store_region: RegionOne
 glance_swift_store_user: 'service:glance'
+
+nova_virt_types:
+  lxc:
+    nova_compute_driver: libvirt.LibvirtDriver
+    nova_reserved_host_memory_mb: 0
+    nova_scheduler_tracks_instance_changes: False
+nova_virt_type: lxc
+
+nova_supported_virt_types:
+  - lxc
+  
