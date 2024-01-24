@@ -196,6 +196,13 @@ neutron_plugin_type: ml2.ovn
 
 neutron_plugin_base:
   - ovn-router
+  - vpnaas
+
+openstack_host_specific_kernel_modules:
+   - { name: "ebtables", pattern: "CONFIG_BRIDGE_NF_EBTABLES=", group: "network_hosts" }
+   - { name: "af_key", pattern: "CONFIG_NET_KEY=", group: "network_hosts" }
+   - { name: "ah4", pattern: "CONFIG_INET_AH=", group: "network_hosts" }
+   - { name: "ipcomp", pattern: "CONFIG_INET_IPCOMP=", group: "network_hosts" }
 
 neutron_ml2_drivers_type: "vlan,local,geneve,flat"
 
