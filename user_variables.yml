@@ -407,3 +407,43 @@ nova_package_list: |-
   {%   set _ = packages.extend(nova_compute_oslomsg_amqp1_distro_packages) %}
   {% endif %}
   {{ packages }}
+
+
+# don't make too much workers
+zun_osapi_compute_workers: 3
+zun_conductor_workers: 3
+zun_metadata_workers: 3
+zun_wsgi_processes_max: 3
+
+
+swift_account_server_replicator_workers: 3
+swift_server_replicator_workers: 3
+swift_object_replicator_workers: 3
+swift_account_server_workers: 3
+swift_container_server_workers: 3
+swift_object_server_workers: 3
+swift_proxy_server_workers_max: 3
+
+placement_wsgi_processes_max: 3
+
+
+nova_wsgi_processes_max: 3
+nova_conductor_workers: 3
+nova_scheduler_workers: 3
+
+neutron_api_workers: 3
+neutron_rpc_workers_max: 3
+neutron_wsgi_processes_max: 3
+
+keystone_wsgi_processes_max: 3
+
+# heat_engine_workers: 4
+# heat_api_workers: 4 heat is reasonable
+
+glance_api_workers: 3
+glance_wsgi_processes_max: 3
+
+
+cinder_wsgi_processes_max: 3
+
+cinder_osapi_volume_workers_max: 3
