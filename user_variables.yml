@@ -447,3 +447,6 @@ glance_wsgi_processes_max: 3
 cinder_wsgi_processes_max: 3
 
 cinder_osapi_volume_workers_max: 3
+
+
+nova_console_type: 'serialconsole'
