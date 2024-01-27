@@ -450,3 +450,5 @@ cinder_osapi_volume_workers_max: 3
 
 
 nova_console_type: 'serialconsole'
+
+nova_cpu_allocation_ratio: 16
