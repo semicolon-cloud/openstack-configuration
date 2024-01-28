@@ -140,7 +140,7 @@ install_method: source
 # proxy_env_url: http://username:pa$$w0rd@10.10.10.9:9000/
 
 ## (1) This sets up a permanent environment, used during and after deployment:
-# no_proxy_env: "localhost,127.0.0.1,{{ internal_lb_vip_address }},{{ external_lb_vip_address }},{% for host in groups['all_containers'] %}{{ hostvars[host]['management_address'] }}{% if not loop.last %},{% endif %}{% endfor %}"
+# no_proxy_env: "localhost,127.0.0.1,{{ internal_lb_vip_address }},{{ external_lb_vip_address }},{% for host in groups['all_containers'] %}{{ hostvars[host]['container_address'] }}{% if not loop.last %},{% endif %}{% endfor %}"
 # global_environment_variables:
 #   HTTP_PROXY: "{{ proxy_env_url }}"
 #   HTTPS_PROXY: "{{ proxy_env_url }}"
@@ -153,7 +153,7 @@ install_method: source
 # deployment_environment_variables:
 #   http_proxy: "{{ proxy_env_url }}"
 #   https_proxy: "{{ proxy_env_url }}"
-#   no_proxy: "localhost,127.0.0.1,{{ internal_lb_vip_address }},{{ external_lb_vip_address }},{% for host in groups['keystone_all'] %}{{ hostvars[host]['management_address'] }}{% if not loop.last %},{% endif %}{% endfor %}"
+#   no_proxy: "localhost,127.0.0.1,{{ internal_lb_vip_address }},{{ external_lb_vip_address }},{% for host in groups['keystone_all'] %}{{ hostvars[host]['container_address'] }}{% if not loop.last %},{% endif %}{% endfor %}"
 
 
 ## SSH connection wait time
@@ -173,8 +173,6 @@ install_method: source
 # HAProxy Keepalived configuration (cf. documentation)
 # Make sure that this is set correctly according to the CIDR used for your
 # internal and external addresses.
-# If you've set external_lb_vip_address or internal_lb_vip_address to FQDN
-# you must set these variables to the corresponding CIDRs for your setup.
 # haproxy_keepalived_external_vip_cidr: "{{external_lb_vip_address}}/32"
 # haproxy_keepalived_internal_vip_cidr: "{{internal_lb_vip_address}}/32"
 # haproxy_keepalived_external_interface:
@@ -194,3 +192,263 @@ install_method: source
 # Keepalived default IP address used to check its alive status (IPv4 only)
 # keepalived_external_ping_address: "193.0.14.129"
 # keepalived_internal_ping_address: "193.0.14.129"
+neutron_plugin_type: ml2.ovn
+
+neutron_plugin_base:
+  - ovn-router
+  - vpnaas
+
+openstack_host_specific_kernel_modules:
+   - { name: "ebtables", pattern: "CONFIG_BRIDGE_NF_EBTABLES=", group: "network_hosts" }
+   - { name: "af_key", pattern: "CONFIG_NET_KEY=", group: "network_hosts" }
+   - { name: "ah4", pattern: "CONFIG_INET_AH=", group: "network_hosts" }
+   - { name: "ipcomp", pattern: "CONFIG_INET_IPCOMP=", group: "network_hosts" }
+
+neutron_ml2_drivers_type: "vlan,local,geneve,flat"
+
+zun_virt_type: lxd
+
+user_requirements_git_url: https://raw.githubusercontent.com/semicolon-cloud/openstack-requirements/stable/2023.1-better/upper-constraints.txt
+# Dude
+requirements_git_install_branch: e3c5bff0b26ffc6388ce0c72388b1b9b41f7f2e8
+zun_kuryr_system_user_name: root
+zun_kuryr_system_group_name: root
+
+haproxy_ssl_letsencrypt_enable: true
+haproxy_ssl_letsencrypt_email: cyoung06@naver.com
+haproxy_ssl_letsencrypt_domains: 
+- cloud.seda.club
+- cloudformation.cloud.seda.club
+- compute.cloud.seda.club
+- container.cloud.seda.club
+- identity.cloud.seda.club
+- image.cloud.seda.club
+- network.cloud.seda.club
+- novnc.compute.cloud.seda.club
+- orchestration.cloud.seda.club
+- placement.cloud.seda.club
+- serialconsole.compute.cloud.seda.club
+- spice.compute.cloud.seda.club
+- volume.cloud.seda.club
+- ws.container.cloud.seda.club
+- designate.cloud.seda.club
+- swift.cloud.seda.club
+
+haproxy_security_headers_csp_report_only: false
+haproxy_horizon_csp: >
+  http-response set-header {{ haproxy_security_headers_csp_report_only | ternary('Content-Security-Policy-Report-Only', 'Content-Security-Policy') }} "
+  default-src 'self';
+  frame-ancestors 'self';
+  form-action 'self';
+  upgrade-insecure-requests;
+  style-src 'self' 'unsafe-inline';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval';
+  child-src 'self' spice.compute.cloud.seda.club novnc.compute.cloud.seda.club serialconsole.compute.cloud.seda.club;
+  frame-src 'self' spice.compute.cloud.seda.club novnc.compute.cloud.seda.club serialconsole.compute.cloud.seda.club;
+  connect-src 'self' cloud.seda.club:* wss://{{ external_lb_vip_address }}:{{ ironic_console_port }} wss://ws.container.cloud.seda.club;
+  img-src 'self' data:;
+  worker-src blob:;
+  "
+
+placement_service_publicurl: "https://placement.cloud.seda.club"
+zun_service_publicuri: "https://container.cloud.seda.club"
+zun_wsproxy_base_uri: "wss://ws.container.cloud.seda.club"
+
+nova_service_publicuri: "https://compute.cloud.seda.club"
+
+nova_spice_html5proxy_base_uri: "https://spice.compute.cloud.seda.club"
+nova_novncproxy_base_uri: "https://novnc.compute.cloud.seda.club"
+nova_serialconsoleproxy_base_uri: "ws://serialconsole.compute.cloud.seda.club"
+
+neutron_service_publicuri: "https://network.cloud.seda.club"
+keystone_service_publicuri: "https://identity.cloud.seda.club"
+heat_service_publicuri: "https://orchestration.cloud.seda.club"
+heat_cfn_service_publicuri: "https://cloudformation.cloud.seda.club"
+heat_waitcondition_server_uri: "https://cloudformation.cloud.seda.club"
+heat_metadata_server_url: "https://cloudformation.cloud.seda.club"
+glance_service_publicuri: "https://image.cloud.seda.club"
+
+cinder_service_publicuri: "https://volume.cloud.seda.club"
+cinder_service_v2_publicuri: "https://volume.cloud.seda.club"
+cinder_service_v3_publicuri: "https://volume.cloud.seda.club"
+
+
+designate_service_publicuri: "https://designate.cloud.seda.club"
+
+swift_service_publicurl: "https://swift.cloud.seda.club/v1/AUTH_%(tenant_id)s"
+
+
+zun_zun_conf_overrides:
+  websocket_proxy:
+    allowed_origins:
+    - 'ws.container.cloud.seda.club'
+    - 'cloud.seda.club'
+
+designate_pools_yaml:
+  - name: "internal"
+    description: Internal Schoolnet Pool
+    attributes:
+      facing: internal
+    ns_records:
+      - hostname: ns1.seda.club.
+        priority: 1
+    nameservers:
+      - host: 10.244.104.50
+        port: 53
+    targets:
+      - type: bind9
+        description: BIND9 Server
+        masters:
+          - host: 172.29.237.134
+            port: 5354
+          - host: 172.29.237.228
+            port: 5354
+          - host: 172.29.237.238
+            port: 5354
+        options:
+          host: 172.29.236.1
+          port: 53
+          rndc_host: 172.29.236.1
+          rndc_key_file: /etc/designate/rndc.key
+          rndc_port: 953
+          view: school
+  - name: "external"
+    description: External Schoolnet Pool
+    attributes:
+      facing: external
+    ns_records:
+      - hostname: ns1.seda.club.
+        priority: 1
+    nameservers:
+      - host: external.seda.club
+        port: 53
+    targets:
+      - type: bind9
+        description: BIND9 Server
+        masters:
+          - host: 172.29.237.134
+            port: 5354
+          - host: 172.29.237.228
+            port: 5354
+          - host: 172.29.237.238
+            port: 5354
+        options:
+          host: 172.29.236.1
+          port: 53
+          rndc_host: 172.29.236.1
+          rndc_key_file: /etc/designate/rndc2.key
+          rndc_port: 953
+          view: rest
+
+## rndc keys for authenticating with bind9
+# define this to create as many key files as are required
+designate_rndc_keys:
+  - name: "rndc-key"
+    file: /etc/designate/rndc.key
+    algorithm: "hmac-sha256"
+    secret: "{{ sedaclub_rndc_key }}"
+  - name: "rndc-key2"
+    file: /etc/designate/rndc2.key
+    algorithm: "hmac-sha256"
+    secret: "{{ remote_sedaclub_rndc_key }}"
+
+swift_allow_all_users: true
+
+glance_default_store: swift
+glance_swift_store_auth_address: '{{ keystone_service_internalurl }}'
+glance_swift_store_container: glance_images
+glance_swift_store_endpoint_type: internalURL
+glance_swift_store_key: '{{ glance_service_password }}'
+glance_swift_store_region: RegionOne
+glance_swift_store_user: 'service:glance'
+
+nova_virt_types:
+  lxc:
+    nova_compute_driver: libvirt.LibvirtDriver
+    nova_reserved_host_memory_mb: 0
+    nova_scheduler_tracks_instance_changes: False
+nova_virt_type: lxc
+
+nova_supported_virt_types:
+  - lxc
+
+nova_compute_lxc_packages:
+  - libvirt-daemon
+  - libvirt-daemon-system
+  - ovmf
+  - python3-libvirt
+  - qemu-efi
+  - qemu-utils
+  - qemu-user
+  - qemu-block-extra
+  - "{{ (ansible_facts['architecture'] == 'x86_64') | ternary('qemu-system-x86', 'qemu-system-arm') }}"
+  - qemu-system-misc
+  - ipxe-qemu
+  - libvirt-daemon-driver-lxc
+
+nova_package_list: |-
+  {% set packages = nova_distro_packages %}
+  {% if nova_services['nova-compute']['group'] in group_names %}
+  {%   set _ = packages.extend(nova_compute_packages) %}
+  {%   if nova_virt_type in ['kvm', 'qemu'] %}
+  {%     set _ = packages.extend(nova_compute_kvm_distro_packages) %}
+  {%     if nova_compute_ksm_enabled %}
+  {%       set _ = packages.extend(nova_compute_ksm_packages) %}
+  {%     endif %}
+  {%   endif %}
+  {%   if nova_virt_type in ['lxc'] %}
+  {%     set _ = packages.extend(nova_compute_lxc_packages) %}
+  {%   endif %}
+  {%   if nova_barbican_enabled | bool %}
+  {%     set _ = packages.extend(nova_compute_barbican_distro_packages) %}
+  {%   endif %}
+  {% endif %}
+  {% if nova_oslomsg_amqp1_enabled | bool %}
+  {%   set _ = packages.extend(nova_compute_oslomsg_amqp1_distro_packages) %}
+  {% endif %}
+  {{ packages }}
+
+
+# don't make too much workers
+zun_osapi_compute_workers: 3
+zun_conductor_workers: 3
+zun_metadata_workers: 3
+zun_wsgi_processes_max: 3
+
+
+swift_account_server_replicator_workers: 3
+swift_server_replicator_workers: 3
+swift_object_replicator_workers: 3
+swift_account_server_workers: 3
+swift_container_server_workers: 3
+swift_object_server_workers: 3
+swift_proxy_server_workers_max: 3
+
+placement_wsgi_processes_max: 3
+
+
+nova_wsgi_processes_max: 3
+nova_conductor_workers: 3
+nova_scheduler_workers: 3
+
+neutron_api_workers: 3
+neutron_rpc_workers_max: 3
+neutron_wsgi_processes_max: 3
+
+keystone_wsgi_processes_max: 3
+
+# heat_engine_workers: 4
+# heat_api_workers: 4 heat is reasonable
+
+glance_api_workers: 3
+glance_wsgi_processes_max: 3
+
+
+cinder_wsgi_processes_max: 3
+
+cinder_osapi_volume_workers_max: 3
+
+
+nova_console_type: 'serialconsole'
+
+nova_cpu_allocation_ratio: 16
