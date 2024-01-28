@@ -77,3 +77,5 @@ doc/source/.doctrees/
 
 # ignore fetched upper-contraints file while translation job
 upper-constraints.txt
+
+githubPrivKey.pem
