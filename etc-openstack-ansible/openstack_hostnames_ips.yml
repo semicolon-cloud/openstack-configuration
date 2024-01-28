@@ -1,0 +1,223 @@
+# This file is managed by openstack-ansible. No manual edits.
+{
+    "inst-10604b858bb0": {
+        "ansible_host": "172.29.236.16",
+        "container_address": "172.29.236.16"
+    },
+    "inst-2c44fd1862cd": {
+        "ansible_host": "172.29.236.9",
+        "container_address": "172.29.236.9"
+    },
+    "inst-6c3b35190a1f": {
+        "ansible_host": "172.29.236.18",
+        "container_address": "172.29.236.18"
+    },
+    "inst-6c3be511f46b": {
+        "ansible_host": "172.29.236.15",
+        "container_address": "172.29.236.15"
+    },
+    "inst-6c3be511f46b_cinder_api_container-700d65c9": {
+        "ansible_host": "172.29.239.57",
+        "container_address": "172.29.239.57"
+    },
+    "inst-6c3be511f46b_galera_container-b436c6fc": {
+        "ansible_host": "172.29.238.98",
+        "container_address": "172.29.238.98"
+    },
+    "inst-6c3be511f46b_glance_container-177994bf": {
+        "ansible_host": "172.29.238.78",
+        "container_address": "172.29.238.78"
+    },
+    "inst-6c3be511f46b_heat_api_container-2fede281": {
+        "ansible_host": "172.29.238.109",
+        "container_address": "172.29.238.109"
+    },
+    "inst-6c3be511f46b_horizon_container-1608d482": {
+        "ansible_host": "172.29.236.46",
+        "container_address": "172.29.236.46"
+    },
+    "inst-6c3be511f46b_keystone_container-5007d8a8": {
+        "ansible_host": "172.29.239.252",
+        "container_address": "172.29.239.252"
+    },
+    "inst-6c3be511f46b_memcached_container-5e2477c6": {
+        "ansible_host": "172.29.239.118",
+        "container_address": "172.29.239.118"
+    },
+    "inst-6c3be511f46b_neutron_server_container-0dca554b": {
+        "ansible_host": "172.29.238.14",
+        "container_address": "172.29.238.14"
+    },
+    "inst-6c3be511f46b_nova_api_container-2bb8d33a": {
+        "ansible_host": "172.29.238.101",
+        "container_address": "172.29.238.101"
+    },
+    "inst-6c3be511f46b_placement_container-cc864b24": {
+        "ansible_host": "172.29.237.240",
+        "container_address": "172.29.237.240"
+    },
+    "inst-6c3be511f46b_rabbit_mq_container-19c2af3d": {
+        "ansible_host": "172.29.236.22",
+        "container_address": "172.29.236.22"
+    },
+    "inst-6c3be511f46b_repo_container-df49d25a": {
+        "ansible_host": "172.29.238.185",
+        "container_address": "172.29.238.185"
+    },
+    "inst-6c3be511f46b_utility_container-9d8afbf2": {
+        "ansible_host": "172.29.238.54",
+        "container_address": "172.29.238.54"
+    },
+    "inst-6c3be511f46b_zun_api_container-7d86f36f": {
+        "ansible_host": "172.29.239.217",
+        "container_address": "172.29.239.217"
+    },
+    "inst-6c3be511f4b0": {
+        "ansible_host": "172.29.236.14",
+        "container_address": "172.29.236.14"
+    },
+    "inst-6c3be511f4b0_cinder_api_container-1d0c6ead": {
+        "ansible_host": "172.29.237.101",
+        "container_address": "172.29.237.101"
+    },
+    "inst-6c3be511f4b0_galera_container-dd5fac7c": {
+        "ansible_host": "172.29.239.78",
+        "container_address": "172.29.239.78"
+    },
+    "inst-6c3be511f4b0_glance_container-7a4dce4b": {
+        "ansible_host": "172.29.238.80",
+        "container_address": "172.29.238.80"
+    },
+    "inst-6c3be511f4b0_heat_api_container-494a2c61": {
+        "ansible_host": "172.29.237.130",
+        "container_address": "172.29.237.130"
+    },
+    "inst-6c3be511f4b0_horizon_container-43c2217c": {
+        "ansible_host": "172.29.237.4",
+        "container_address": "172.29.237.4"
+    },
+    "inst-6c3be511f4b0_keystone_container-d289243b": {
+        "ansible_host": "172.29.238.213",
+        "container_address": "172.29.238.213"
+    },
+    "inst-6c3be511f4b0_memcached_container-6c1a7c94": {
+        "ansible_host": "172.29.237.8",
+        "container_address": "172.29.237.8"
+    },
+    "inst-6c3be511f4b0_neutron_server_container-278b83f9": {
+        "ansible_host": "172.29.239.151",
+        "container_address": "172.29.239.151"
+    },
+    "inst-6c3be511f4b0_nova_api_container-8a986078": {
+        "ansible_host": "172.29.238.3",
+        "container_address": "172.29.238.3"
+    },
+    "inst-6c3be511f4b0_placement_container-bc5e4034": {
+        "ansible_host": "172.29.236.167",
+        "container_address": "172.29.236.167"
+    },
+    "inst-6c3be511f4b0_rabbit_mq_container-18fbf212": {
+        "ansible_host": "172.29.238.237",
+        "container_address": "172.29.238.237"
+    },
+    "inst-6c3be511f4b0_repo_container-a21e9871": {
+        "ansible_host": "172.29.238.252",
+        "container_address": "172.29.238.252"
+    },
+    "inst-6c3be511f4b0_utility_container-32c528d7": {
+        "ansible_host": "172.29.237.1",
+        "container_address": "172.29.237.1"
+    },
+    "inst-6c3be511f4b0_zun_api_container-3137d576": {
+        "ansible_host": "172.29.239.49",
+        "container_address": "172.29.239.49"
+    },
+    "inst-6c3be511f4ba": {
+        "ansible_host": "172.29.236.13",
+        "container_address": "172.29.236.13"
+    },
+    "inst-6c3be5165172": {
+        "ansible_host": "172.29.236.6",
+        "container_address": "172.29.236.6"
+    },
+    "inst-6c3be5165177": {
+        "ansible_host": "172.29.236.7",
+        "container_address": "172.29.236.7"
+    },
+    "inst-6c3be51909f3": {
+        "ansible_host": "172.29.236.5",
+        "container_address": "172.29.236.5"
+    },
+    "inst-6c3be5190a14": {
+        "ansible_host": "172.29.236.12",
+        "container_address": "172.29.236.12"
+    },
+    "inst-6c3be5190a16": {
+        "ansible_host": "172.29.236.8",
+        "container_address": "172.29.236.8"
+    },
+    "inst-6c3be5190a66": {
+        "ansible_host": "172.29.236.17",
+        "container_address": "172.29.236.17"
+    },
+    "inst-6c3be5190a72": {
+        "ansible_host": "172.29.236.11",
+        "container_address": "172.29.236.11"
+    },
+    "inst-6c3be5190a72_cinder_api_container-ed493e76": {
+        "ansible_host": "172.29.239.75",
+        "container_address": "172.29.239.75"
+    },
+    "inst-6c3be5190a72_galera_container-55a46ada": {
+        "ansible_host": "172.29.239.182",
+        "container_address": "172.29.239.182"
+    },
+    "inst-6c3be5190a72_glance_container-ab0086af": {
+        "ansible_host": "172.29.236.220",
+        "container_address": "172.29.236.220"
+    },
+    "inst-6c3be5190a72_heat_api_container-79281767": {
+        "ansible_host": "172.29.239.2",
+        "container_address": "172.29.239.2"
+    },
+    "inst-6c3be5190a72_horizon_container-8f93bf1b": {
+        "ansible_host": "172.29.236.76",
+        "container_address": "172.29.236.76"
+    },
+    "inst-6c3be5190a72_keystone_container-47d47e2d": {
+        "ansible_host": "172.29.238.196",
+        "container_address": "172.29.238.196"
+    },
+    "inst-6c3be5190a72_memcached_container-6ac6a559": {
+        "ansible_host": "172.29.238.1",
+        "container_address": "172.29.238.1"
+    },
+    "inst-6c3be5190a72_neutron_server_container-4312ff0b": {
+        "ansible_host": "172.29.238.208",
+        "container_address": "172.29.238.208"
+    },
+    "inst-6c3be5190a72_nova_api_container-95b01a07": {
+        "ansible_host": "172.29.237.103",
+        "container_address": "172.29.237.103"
+    },
+    "inst-6c3be5190a72_placement_container-96ffba9e": {
+        "ansible_host": "172.29.237.16",
+        "container_address": "172.29.237.16"
+    },
+    "inst-6c3be5190a72_rabbit_mq_container-b7d3dd06": {
+        "ansible_host": "172.29.236.73",
+        "container_address": "172.29.236.73"
+    },
+    "inst-6c3be5190a72_repo_container-6649cbc3": {
+        "ansible_host": "172.29.237.50",
+        "container_address": "172.29.237.50"
+    },
+    "inst-6c3be5190a72_utility_container-0c94e124": {
+        "ansible_host": "172.29.236.243",
+        "container_address": "172.29.236.243"
+    },
+    "inst-6c3be5190a72_zun_api_container-ba432e00": {
+        "ansible_host": "172.29.237.125",
+        "container_address": "172.29.237.125"
+    }
+}
