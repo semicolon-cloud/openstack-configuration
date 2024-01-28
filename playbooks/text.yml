@@ -1,0 +1,81 @@
+- name: Gather swift facts
+  hosts: swift_all:swift_remote_all
+  gather_facts: "{{ osa_gather_facts | default(True) }}"
+  tasks:
+    - name: Gather additional facts
+      include_tasks: "common-tasks/gather-hardware-facts.yml"
+      when: osa_gather_facts | default(True)
+  tags:
+    - always
+- name: Wat aaa
+  hosts: swift_all:swift_remote_all
+  tasks:
+#  - name: wawt
+#    ansible.builtin.debug:
+#      msg: wat the {{ swift_storage_bridge }}
+  - name: Get swift storage bridge
+    set_fact:
+      swift_storage_bridge: "{{ swift.storage_network | replace('-', '_') }}"
+    when:
+      - swift.storage_network is defined
+      - swift_storage_address is not defined
+    tags:
+      - always
+  - name: aa
+    ansible.builtin.debug:
+      msg: wat the {{ swift_storage_bridge }} {{ ansible_facts[swift_storage_bridge] }} 
+  - name: Gather facts for storage_bridge
+    setup:
+      filter: "{{ swift_storage_bridge }}"
+    when:
+      - swift_storage_bridge is defined
+      - ansible_facts[swift_storage_bridge] is defined
+      - swift_storage_address is not defined
+
+  - name: Swift storage address not found
+    fail:
+      msg: "{{ swift.storage_network }} not found on host, can't find storage address."
+    when:
+      - swift.storage_network is defined
+      - swift_storage_bridge is defined
+      - ansible_facts[swift_storage_bridge] is not defined
+      - swift_storage_address is not defined
+  - name: Set swift_storage_address fact if defined
+    set_fact:
+      swift_storage_address: "{{ swift_storage_address }}"
+    when:
+      - swift_storage_address is defined
+    tags:
+      - always
+  # swift_vars.storage_ip always takes precedence
+  - name: Get swift_vars.storage_ip if defined
+    set_fact:
+      swift_storage_address: "{{ swift_vars.storage_ip }}"
+    when:
+      - swift_vars.storage_ip is defined
+    tags:
+      - always
+  # Get the swift storage bridge
+  - name: Get swift storage bridge
+    set_fact:
+      swift_storage_bridge: "{{ swift.storage_network | replace('-', '_') }}"
+    when:
+      - swift.storage_network is defined
+      - swift_storage_address is not defined
+    tags:
+      - always
+  - name: Gather facts for storage_bridge
+    setup:
+      filter: "{{ swift_storage_bridge }}"
+    when:
+      - swift_storage_bridge is defined
+      - ansible_facts[swift_storage_bridge] is defined
+      - swift_storage_address is not defined
+  - name: Swift storage address not found
+    fail:
+      msg: "{{ swift.storage_network }} not found on host, can't find storage address."
+    when:
+      - swift.storage_network is defined
+      - swift_storage_bridge is defined
+      - ansible_facts[swift_storage_bridge] is not defined
+      - swift_storage_address is not defined
