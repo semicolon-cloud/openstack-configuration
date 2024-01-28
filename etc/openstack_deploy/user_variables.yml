@@ -452,3 +452,14 @@ cinder_osapi_volume_workers_max: 3
 nova_console_type: 'serialconsole'
 
 nova_cpu_allocation_ratio: 16
+
+# NodeExporter
+galera_additional_users:
+  - name: "exporter"
+    host: '%'
+    password: "{{ prometheus_mysqld_exporter_galera_password }}"
+    priv: '*.*:PROCESS,REPLICATION CLIENT,SELECT,SLAVE MONITOR'
+    resource_limits:
+      MAX_USER_CONNECTIONS: 3
+    check_hostname: false
+    state: present
