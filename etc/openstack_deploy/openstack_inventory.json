@@ -3,7 +3,17 @@
         "hostvars": {
             "inst-10604b858bb0": {
                 "ansible_host": "172.29.236.16",
-                "component": "neutron_ovn_gateway",
+                "cinder_backends": {
+                    "lvm": {
+                        "iscsi_ip_address": "172.29.244.16",
+                        "volume_backend_name": "LVM_iSCSI",
+                        "volume_driver": "cinder.volume.drivers.lvm.LVMVolumeDriver",
+                        "volume_group": "cinder-volumes"
+                    }
+                },
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_cont",
                 "container_address": "172.29.236.16",
                 "container_name": "inst-10604b858bb0",
                 "container_networks": {
@@ -23,6 +33,12 @@
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
+                    "storage_address": {
+                        "bridge": "br-storage",
+                        "mtu": "1000",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
                         "mtu": "1000",
@@ -35,14 +51,24 @@
                 "is_metal": true,
                 "management_address": "172.29.236.16",
                 "physical_host": "inst-10604b858bb0",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
             },
             "inst-2c44fd1862cd": {
                 "ansible_host": "172.29.236.9",
-                "component": "neutron_ovn_gateway",
+                "cinder_backends": {
+                    "lvm": {
+                        "iscsi_ip_address": "172.29.244.9",
+                        "volume_backend_name": "LVM_iSCSI",
+                        "volume_driver": "cinder.volume.drivers.lvm.LVMVolumeDriver",
+                        "volume_group": "cinder-volumes"
+                    }
+                },
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_cont",
                 "container_address": "172.29.236.9",
                 "container_name": "inst-2c44fd1862cd",
                 "container_networks": {
@@ -62,6 +88,12 @@
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
+                    "storage_address": {
+                        "bridge": "br-storage",
+                        "mtu": "1000",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
                         "mtu": "1000",
@@ -74,14 +106,24 @@
                 "is_metal": true,
                 "management_address": "172.29.236.9",
                 "physical_host": "inst-2c44fd1862cd",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
             },
             "inst-6c3b35190a1f": {
                 "ansible_host": "172.29.236.18",
-                "component": "neutron_ovn_gateway",
+                "cinder_backends": {
+                    "lvm": {
+                        "iscsi_ip_address": "172.29.244.18",
+                        "volume_backend_name": "LVM_iSCSI",
+                        "volume_driver": "cinder.volume.drivers.lvm.LVMVolumeDriver",
+                        "volume_group": "cinder-volumes"
+                    }
+                },
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_cont",
                 "container_address": "172.29.236.18",
                 "container_name": "inst-6c3b35190a1f",
                 "container_networks": {
@@ -101,6 +143,12 @@
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
+                    "storage_address": {
+                        "bridge": "br-storage",
+                        "mtu": "1000",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
                         "mtu": "1000",
@@ -113,7 +161,7 @@
                 "is_metal": true,
                 "management_address": "172.29.236.18",
                 "physical_host": "inst-6c3b35190a1f",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
@@ -130,7 +178,7 @@
                 },
                 "cinder_default_availability_zone": "cinderAZ_1",
                 "cinder_storage_availability_zone": "cinderAZ_1",
-                "component": "neutron_ovn_gateway",
+                "component": "swift_cont",
                 "container_address": "172.29.236.15",
                 "container_name": "inst-6c3be511f46b",
                 "container_networks": {
@@ -168,7 +216,7 @@
                 "is_metal": true,
                 "management_address": "172.29.236.15",
                 "physical_host": "inst-6c3be511f46b",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
@@ -201,6 +249,27 @@
                 "management_address": "172.29.239.57",
                 "physical_host": "inst-6c3be511f46b",
                 "physical_host_group": "storage-infra_hosts",
+                "properties": {}
+            },
+            "inst-6c3be511f46b_designate_container-9d7d351e": {
+                "ansible_host": "172.29.239.184",
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "designate_api",
+                "container_name": "inst-6c3be511f46b_designate_container-9d7d351e",
+                "container_networks": {
+                    "management_address": {
+                        "address": "172.29.239.184",
+                        "bridge": "br-mgmt",
+                        "interface": "eth1",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    }
+                },
+                "container_tech": "lxc",
+                "management_address": "172.29.239.184",
+                "physical_host": "inst-6c3be511f46b",
+                "physical_host_group": "dnsaas_hosts",
                 "properties": {}
             },
             "inst-6c3be511f46b_galera_container-b436c6fc": {
@@ -477,6 +546,27 @@
                 "physical_host_group": "repo-infra_hosts",
                 "properties": {}
             },
+            "inst-6c3be511f46b_swift_proxy_container-30006f0f": {
+                "ansible_host": "172.29.237.102",
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_proxy",
+                "container_name": "inst-6c3be511f46b_swift_proxy_container-30006f0f",
+                "container_networks": {
+                    "management_address": {
+                        "address": "172.29.237.102",
+                        "bridge": "br-mgmt",
+                        "interface": "eth1",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    }
+                },
+                "container_tech": "lxc",
+                "management_address": "172.29.237.102",
+                "physical_host": "inst-6c3be511f46b",
+                "physical_host_group": "swift-proxy_hosts",
+                "properties": {}
+            },
             "inst-6c3be511f46b_utility_container-9d8afbf2": {
                 "ansible_host": "172.29.238.54",
                 "cinder_default_availability_zone": "cinderAZ_1",
@@ -555,7 +645,7 @@
                 },
                 "cinder_default_availability_zone": "cinderAZ_1",
                 "cinder_storage_availability_zone": "cinderAZ_1",
-                "component": "neutron_ovn_gateway",
+                "component": "swift_cont",
                 "container_address": "172.29.236.14",
                 "container_name": "inst-6c3be511f4b0",
                 "container_networks": {
@@ -593,7 +683,7 @@
                 "is_metal": true,
                 "management_address": "172.29.236.14",
                 "physical_host": "inst-6c3be511f4b0",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
@@ -626,6 +716,27 @@
                 "management_address": "172.29.237.101",
                 "physical_host": "inst-6c3be511f4b0",
                 "physical_host_group": "storage-infra_hosts",
+                "properties": {}
+            },
+            "inst-6c3be511f4b0_designate_container-d7435e1b": {
+                "ansible_host": "172.29.239.240",
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "designate_api",
+                "container_name": "inst-6c3be511f4b0_designate_container-d7435e1b",
+                "container_networks": {
+                    "management_address": {
+                        "address": "172.29.239.240",
+                        "bridge": "br-mgmt",
+                        "interface": "eth1",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    }
+                },
+                "container_tech": "lxc",
+                "management_address": "172.29.239.240",
+                "physical_host": "inst-6c3be511f4b0",
+                "physical_host_group": "dnsaas_hosts",
                 "properties": {}
             },
             "inst-6c3be511f4b0_galera_container-dd5fac7c": {
@@ -902,6 +1013,27 @@
                 "physical_host_group": "repo-infra_hosts",
                 "properties": {}
             },
+            "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4": {
+                "ansible_host": "172.29.238.19",
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_proxy",
+                "container_name": "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4",
+                "container_networks": {
+                    "management_address": {
+                        "address": "172.29.238.19",
+                        "bridge": "br-mgmt",
+                        "interface": "eth1",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    }
+                },
+                "container_tech": "lxc",
+                "management_address": "172.29.238.19",
+                "physical_host": "inst-6c3be511f4b0",
+                "physical_host_group": "swift-proxy_hosts",
+                "properties": {}
+            },
             "inst-6c3be511f4b0_utility_container-32c528d7": {
                 "ansible_host": "172.29.237.1",
                 "cinder_default_availability_zone": "cinderAZ_1",
@@ -970,7 +1102,17 @@
             },
             "inst-6c3be511f4ba": {
                 "ansible_host": "172.29.236.13",
-                "component": "neutron_ovn_gateway",
+                "cinder_backends": {
+                    "lvm": {
+                        "iscsi_ip_address": "172.29.244.13",
+                        "volume_backend_name": "LVM_iSCSI",
+                        "volume_driver": "cinder.volume.drivers.lvm.LVMVolumeDriver",
+                        "volume_group": "cinder-volumes"
+                    }
+                },
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_cont",
                 "container_address": "172.29.236.13",
                 "container_name": "inst-6c3be511f4ba",
                 "container_networks": {
@@ -990,6 +1132,12 @@
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
+                    "storage_address": {
+                        "bridge": "br-storage",
+                        "mtu": "1000",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
                         "mtu": "1000",
@@ -1002,14 +1150,24 @@
                 "is_metal": true,
                 "management_address": "172.29.236.13",
                 "physical_host": "inst-6c3be511f4ba",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
             },
             "inst-6c3be5165172": {
                 "ansible_host": "172.29.236.6",
-                "component": "neutron_ovn_gateway",
+                "cinder_backends": {
+                    "lvm": {
+                        "iscsi_ip_address": "172.29.244.6",
+                        "volume_backend_name": "LVM_iSCSI",
+                        "volume_driver": "cinder.volume.drivers.lvm.LVMVolumeDriver",
+                        "volume_group": "cinder-volumes"
+                    }
+                },
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_cont",
                 "container_address": "172.29.236.6",
                 "container_name": "inst-6c3be5165172",
                 "container_networks": {
@@ -1029,6 +1187,12 @@
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
+                    "storage_address": {
+                        "bridge": "br-storage",
+                        "mtu": "1000",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
                         "mtu": "1000",
@@ -1041,14 +1205,24 @@
                 "is_metal": true,
                 "management_address": "172.29.236.6",
                 "physical_host": "inst-6c3be5165172",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
             },
             "inst-6c3be5165177": {
                 "ansible_host": "172.29.236.7",
-                "component": "neutron_ovn_gateway",
+                "cinder_backends": {
+                    "lvm": {
+                        "iscsi_ip_address": "172.29.244.7",
+                        "volume_backend_name": "LVM_iSCSI",
+                        "volume_driver": "cinder.volume.drivers.lvm.LVMVolumeDriver",
+                        "volume_group": "cinder-volumes"
+                    }
+                },
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_cont",
                 "container_address": "172.29.236.7",
                 "container_name": "inst-6c3be5165177",
                 "container_networks": {
@@ -1068,6 +1242,12 @@
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
+                    "storage_address": {
+                        "bridge": "br-storage",
+                        "mtu": "1000",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
                         "mtu": "1000",
@@ -1080,14 +1260,24 @@
                 "is_metal": true,
                 "management_address": "172.29.236.7",
                 "physical_host": "inst-6c3be5165177",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
             },
             "inst-6c3be51909f3": {
                 "ansible_host": "172.29.236.5",
-                "component": "neutron_ovn_gateway",
+                "cinder_backends": {
+                    "lvm": {
+                        "iscsi_ip_address": "172.29.244.5",
+                        "volume_backend_name": "LVM_iSCSI",
+                        "volume_driver": "cinder.volume.drivers.lvm.LVMVolumeDriver",
+                        "volume_group": "cinder-volumes"
+                    }
+                },
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_cont",
                 "container_address": "172.29.236.5",
                 "container_name": "inst-6c3be51909f3",
                 "container_networks": {
@@ -1107,6 +1297,12 @@
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
+                    "storage_address": {
+                        "bridge": "br-storage",
+                        "mtu": "1000",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
                         "mtu": "1000",
@@ -1119,14 +1315,24 @@
                 "is_metal": true,
                 "management_address": "172.29.236.5",
                 "physical_host": "inst-6c3be51909f3",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
             },
             "inst-6c3be5190a14": {
                 "ansible_host": "172.29.236.12",
-                "component": "neutron_ovn_gateway",
+                "cinder_backends": {
+                    "lvm": {
+                        "iscsi_ip_address": "172.29.244.12",
+                        "volume_backend_name": "LVM_iSCSI",
+                        "volume_driver": "cinder.volume.drivers.lvm.LVMVolumeDriver",
+                        "volume_group": "cinder-volumes"
+                    }
+                },
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_cont",
                 "container_address": "172.29.236.12",
                 "container_name": "inst-6c3be5190a14",
                 "container_networks": {
@@ -1146,6 +1352,12 @@
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
+                    "storage_address": {
+                        "bridge": "br-storage",
+                        "mtu": "1000",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
                         "mtu": "1000",
@@ -1158,14 +1370,24 @@
                 "is_metal": true,
                 "management_address": "172.29.236.12",
                 "physical_host": "inst-6c3be5190a14",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
             },
             "inst-6c3be5190a16": {
                 "ansible_host": "172.29.236.8",
-                "component": "neutron_ovn_gateway",
+                "cinder_backends": {
+                    "lvm": {
+                        "iscsi_ip_address": "172.29.244.8",
+                        "volume_backend_name": "LVM_iSCSI",
+                        "volume_driver": "cinder.volume.drivers.lvm.LVMVolumeDriver",
+                        "volume_group": "cinder-volumes"
+                    }
+                },
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_cont",
                 "container_address": "172.29.236.8",
                 "container_name": "inst-6c3be5190a16",
                 "container_networks": {
@@ -1185,6 +1407,12 @@
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
+                    "storage_address": {
+                        "bridge": "br-storage",
+                        "mtu": "1000",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
                         "mtu": "1000",
@@ -1197,7 +1425,7 @@
                 "is_metal": true,
                 "management_address": "172.29.236.8",
                 "physical_host": "inst-6c3be5190a16",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
@@ -1214,7 +1442,7 @@
                 },
                 "cinder_default_availability_zone": "cinderAZ_1",
                 "cinder_storage_availability_zone": "cinderAZ_1",
-                "component": "neutron_ovn_gateway",
+                "component": "swift_cont",
                 "container_address": "172.29.236.17",
                 "container_name": "inst-6c3be5190a66",
                 "container_networks": {
@@ -1252,7 +1480,7 @@
                 "is_metal": true,
                 "management_address": "172.29.236.17",
                 "physical_host": "inst-6c3be5190a66",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
@@ -1269,7 +1497,7 @@
                 },
                 "cinder_default_availability_zone": "cinderAZ_1",
                 "cinder_storage_availability_zone": "cinderAZ_1",
-                "component": "neutron_ovn_gateway",
+                "component": "swift_cont",
                 "container_address": "172.29.236.11",
                 "container_name": "inst-6c3be5190a72",
                 "container_networks": {
@@ -1307,7 +1535,7 @@
                 "is_metal": true,
                 "management_address": "172.29.236.11",
                 "physical_host": "inst-6c3be5190a72",
-                "physical_host_group": "network-gateway_hosts",
+                "physical_host_group": "swift_hosts",
                 "properties": {
                     "is_metal": true
                 }
@@ -1340,6 +1568,27 @@
                 "management_address": "172.29.239.75",
                 "physical_host": "inst-6c3be5190a72",
                 "physical_host_group": "storage-infra_hosts",
+                "properties": {}
+            },
+            "inst-6c3be5190a72_designate_container-c5595c60": {
+                "ansible_host": "172.29.237.96",
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "designate_api",
+                "container_name": "inst-6c3be5190a72_designate_container-c5595c60",
+                "container_networks": {
+                    "management_address": {
+                        "address": "172.29.237.96",
+                        "bridge": "br-mgmt",
+                        "interface": "eth1",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    }
+                },
+                "container_tech": "lxc",
+                "management_address": "172.29.237.96",
+                "physical_host": "inst-6c3be5190a72",
+                "physical_host_group": "dnsaas_hosts",
                 "properties": {}
             },
             "inst-6c3be5190a72_galera_container-55a46ada": {
@@ -1616,6 +1865,27 @@
                 "physical_host_group": "repo-infra_hosts",
                 "properties": {}
             },
+            "inst-6c3be5190a72_swift_proxy_container-d1e3ef50": {
+                "ansible_host": "172.29.238.217",
+                "cinder_default_availability_zone": "cinderAZ_1",
+                "cinder_storage_availability_zone": "cinderAZ_1",
+                "component": "swift_proxy",
+                "container_name": "inst-6c3be5190a72_swift_proxy_container-d1e3ef50",
+                "container_networks": {
+                    "management_address": {
+                        "address": "172.29.238.217",
+                        "bridge": "br-mgmt",
+                        "interface": "eth1",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
+                    }
+                },
+                "container_tech": "lxc",
+                "management_address": "172.29.238.217",
+                "physical_host": "inst-6c3be5190a72",
+                "physical_host_group": "swift-proxy_hosts",
+                "properties": {}
+            },
             "inst-6c3be5190a72_utility_container-0c94e124": {
                 "ansible_host": "172.29.236.243",
                 "cinder_default_availability_zone": "cinderAZ_1",
@@ -1776,7 +2046,34 @@
                         "type": "flat"
                     }
                 }
-            ]
+            ],
+            "swift": {
+                "account": null,
+                "container": null,
+                "drives": [
+                    {
+                        "name": "sdb"
+                    },
+                    {
+                        "name": "sdc"
+                    }
+                ],
+                "min_part_hours": 1,
+                "mount_point": "/srv/node",
+                "part_power": 11,
+                "repl_number": 3,
+                "storage_network": "br-storage",
+                "storage_policies": [
+                    {
+                        "policy": {
+                            "default": true,
+                            "index": 0,
+                            "name": "gold"
+                        }
+                    }
+                ],
+                "weight": 100
+            }
         }
     },
     "all_containers": {
@@ -2054,7 +2351,16 @@
             "inst-6c3be5190a66",
             "inst-6c3be511f46b",
             "inst-6c3be511f4b0",
-            "inst-6c3be5190a72"
+            "inst-6c3be5190a72",
+            "inst-6c3b35190a1f",
+            "inst-10604b858bb0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3"
         ]
     },
     "cinder_scheduler": {
@@ -2071,7 +2377,16 @@
             "inst-6c3be5190a66",
             "inst-6c3be511f46b",
             "inst-6c3be511f4b0",
-            "inst-6c3be5190a72"
+            "inst-6c3be5190a72",
+            "inst-6c3b35190a1f",
+            "inst-10604b858bb0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3"
         ]
     },
     "cinder_volumes_container": {
@@ -2115,6 +2430,23 @@
         "children": [],
         "hosts": []
     },
+    "compute_all": {
+        "hosts": [
+            "inst-6c3be5190a66",
+            "inst-10604b858bb0",
+            "inst-6c3be511f46b",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-6c3be5190a72",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3",
+            "inst-6c3b35190a1f"
+        ]
+    },
     "compute_containers": {
         "children": [
             "nova_compute_container"
@@ -2123,7 +2455,21 @@
     },
     "compute_hosts": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a66",
+            "inst-10604b858bb0",
+            "inst-6c3be511f46b",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-6c3be5190a72",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3",
+            "inst-6c3b35190a1f"
+        ]
     },
     "coordination_all": {
         "hosts": [
@@ -2181,30 +2527,68 @@
     },
     "designate_api": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72_designate_container-c5595c60",
+            "inst-6c3be511f4b0_designate_container-d7435e1b",
+            "inst-6c3be511f46b_designate_container-9d7d351e"
+        ]
     },
     "designate_central": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72_designate_container-c5595c60",
+            "inst-6c3be511f4b0_designate_container-d7435e1b",
+            "inst-6c3be511f46b_designate_container-9d7d351e"
+        ]
     },
     "designate_container": {
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72_designate_container-c5595c60",
+            "inst-6c3be511f4b0_designate_container-d7435e1b",
+            "inst-6c3be511f46b_designate_container-9d7d351e"
+        ]
     },
     "designate_mdns": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72_designate_container-c5595c60",
+            "inst-6c3be511f4b0_designate_container-d7435e1b",
+            "inst-6c3be511f46b_designate_container-9d7d351e"
+        ]
     },
     "designate_producer": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72_designate_container-c5595c60",
+            "inst-6c3be511f4b0_designate_container-d7435e1b",
+            "inst-6c3be511f46b_designate_container-9d7d351e"
+        ]
     },
     "designate_sink": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72_designate_container-c5595c60",
+            "inst-6c3be511f4b0_designate_container-d7435e1b",
+            "inst-6c3be511f46b_designate_container-9d7d351e"
+        ]
     },
     "designate_worker": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72_designate_container-c5595c60",
+            "inst-6c3be511f4b0_designate_container-d7435e1b",
+            "inst-6c3be511f46b_designate_container-9d7d351e"
+        ]
+    },
+    "dnsaas_all": {
+        "hosts": [
+            "inst-6c3be5190a72",
+            "inst-6c3be5190a72_designate_container-c5595c60",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f4b0_designate_container-d7435e1b",
+            "inst-6c3be511f46b",
+            "inst-6c3be511f46b_designate_container-9d7d351e"
+        ]
     },
     "dnsaas_containers": {
         "children": [
@@ -2214,7 +2598,11 @@
     },
     "dnsaas_hosts": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f46b"
+        ]
     },
     "etcd": {
         "children": [],
@@ -2509,7 +2897,9 @@
             "inst-6c3be511f46b_heat_api_container-2fede281",
             "inst-6c3be511f46b_glance_container-177994bf",
             "inst-6c3be511f46b_zookeeper_container-d6fd7160",
-            "inst-6c3be511f46b_neutron_ovn_northd_container-a25b885f"
+            "inst-6c3be511f46b_neutron_ovn_northd_container-a25b885f",
+            "inst-6c3be511f46b_swift_proxy_container-30006f0f",
+            "inst-6c3be511f46b_designate_container-9d7d351e"
         ]
     },
     "inst-6c3be511f4b0-host_containers": {
@@ -2529,7 +2919,9 @@
             "inst-6c3be511f4b0_heat_api_container-494a2c61",
             "inst-6c3be511f4b0_glance_container-7a4dce4b",
             "inst-6c3be511f4b0_zookeeper_container-10502657",
-            "inst-6c3be511f4b0_neutron_ovn_northd_container-c088ef10"
+            "inst-6c3be511f4b0_neutron_ovn_northd_container-c088ef10",
+            "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4",
+            "inst-6c3be511f4b0_designate_container-d7435e1b"
         ]
     },
     "inst-6c3be5190a72-host_containers": {
@@ -2549,7 +2941,9 @@
             "inst-6c3be5190a72_heat_api_container-79281767",
             "inst-6c3be5190a72_glance_container-ab0086af",
             "inst-6c3be5190a72_zookeeper_container-ffe36b2b",
-            "inst-6c3be5190a72_neutron_ovn_northd_container-b16fda87"
+            "inst-6c3be5190a72_neutron_ovn_northd_container-b16fda87",
+            "inst-6c3be5190a72_swift_proxy_container-d1e3ef50",
+            "inst-6c3be5190a72_designate_container-c5595c60"
         ]
     },
     "ironic-compute_containers": {
@@ -3333,7 +3727,21 @@
     },
     "nova_compute": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a66",
+            "inst-10604b858bb0",
+            "inst-6c3be511f46b",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-6c3be5190a72",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3",
+            "inst-6c3b35190a1f"
+        ]
     },
     "nova_compute_container": {
         "hosts": []
@@ -3782,7 +4190,16 @@
             "inst-6c3be5190a66",
             "inst-6c3be511f46b",
             "inst-6c3be511f4b0",
-            "inst-6c3be5190a72"
+            "inst-6c3be5190a72",
+            "inst-6c3b35190a1f",
+            "inst-10604b858bb0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3"
         ]
     },
     "storage_containers": {
@@ -3800,7 +4217,26 @@
             "inst-6c3be5190a66",
             "inst-6c3be511f46b",
             "inst-6c3be511f4b0",
-            "inst-6c3be5190a72"
+            "inst-6c3be5190a72",
+            "inst-6c3b35190a1f",
+            "inst-10604b858bb0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3"
+        ]
+    },
+    "swift-proxy_all": {
+        "hosts": [
+            "inst-6c3be5190a72",
+            "inst-6c3be5190a72_swift_proxy_container-d1e3ef50",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4",
+            "inst-6c3be511f46b",
+            "inst-6c3be511f46b_swift_proxy_container-30006f0f"
         ]
     },
     "swift-proxy_containers": {
@@ -3811,7 +4247,11 @@
     },
     "swift-proxy_hosts": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f46b"
+        ]
     },
     "swift-remote_containers": {
         "children": [
@@ -3825,7 +4265,21 @@
     },
     "swift_acc": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a66",
+            "inst-10604b858bb0",
+            "inst-6c3be511f46b",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-6c3be5190a72",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3",
+            "inst-6c3b35190a1f"
+        ]
     },
     "swift_acc_container": {
         "hosts": []
@@ -3837,11 +4291,39 @@
             "swift_obj",
             "swift_cont"
         ],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a66",
+            "inst-10604b858bb0",
+            "inst-6c3be511f46b",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-6c3be5190a72",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3",
+            "inst-6c3b35190a1f"
+        ]
     },
     "swift_cont": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a66",
+            "inst-10604b858bb0",
+            "inst-6c3be511f46b",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-6c3be5190a72",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3",
+            "inst-6c3b35190a1f"
+        ]
     },
     "swift_cont_container": {
         "hosts": []
@@ -3856,21 +4338,57 @@
     },
     "swift_hosts": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a66",
+            "inst-10604b858bb0",
+            "inst-6c3be511f46b",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-6c3be5190a72",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3",
+            "inst-6c3b35190a1f"
+        ]
     },
     "swift_obj": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a66",
+            "inst-10604b858bb0",
+            "inst-6c3be511f46b",
+            "inst-6c3be511f4b0",
+            "inst-6c3be511f4ba",
+            "inst-6c3be5190a14",
+            "inst-6c3be5190a72",
+            "inst-2c44fd1862cd",
+            "inst-6c3be5190a16",
+            "inst-6c3be5165177",
+            "inst-6c3be5165172",
+            "inst-6c3be51909f3",
+            "inst-6c3b35190a1f"
+        ]
     },
     "swift_obj_container": {
         "hosts": []
     },
     "swift_proxy": {
         "children": [],
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72_swift_proxy_container-d1e3ef50",
+            "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4",
+            "inst-6c3be511f46b_swift_proxy_container-30006f0f"
+        ]
     },
     "swift_proxy_container": {
-        "hosts": []
+        "hosts": [
+            "inst-6c3be5190a72_swift_proxy_container-d1e3ef50",
+            "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4",
+            "inst-6c3be511f46b_swift_proxy_container-30006f0f"
+        ]
     },
     "swift_remote": {
         "children": [],

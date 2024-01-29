@@ -1,0 +1,17 @@
+---
+- name: systemd_service
+  scm: git
+  src: https://opendev.org/openstack/ansible-role-systemd_service
+  version: master
+- name: systemd_mount
+  scm: git
+  src: https://opendev.org/openstack/ansible-role-systemd_mount
+  version: master
+- name: config_template
+  scm: git
+  src: https://opendev.org/openstack/ansible-config_template
+  version: master
+- name: apt_package_pinning
+  scm: git
+  src: https://opendev.org/openstack/openstack-ansible-apt_package_pinning
+  version: master

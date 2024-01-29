@@ -1,0 +1,10 @@
+---
+- include_tasks: "elastic_ilm_policy_template.yml"
+  when: ilm_policy_file_location is defined and ilm_policy_filename is defined and ilm_policy is defined
+
+- block:
+  - name: Update policy and template when not upgrading
+    include_tasks: "elastic_ilm_update_policy.yml"
+  environment:
+    no_proxy: "{{ elastic_beat_no_proxy }},127.0.0.1"
+  when: (elk_package_state | default('present')) != "latest"

@@ -1,0 +1,47 @@
+---
+# Copyright 2018, Vexxhost, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+heartbeat_service_state: restarted
+
+heartbeat_ilm_policy_name: "heartbeat-{{ beat_version }}"
+heartbeat_ilm_policy_template: "heartbeat-{{ beat_version}}"
+heartbeat_ilm_policy_filename: "heartbeat-ilm-policy.json"
+heartbeat_ilm_policy_file_location: "/etc/heartbeat"
+
+ilm_policy_name: "{{ heartbeat_ilm_policy_name | default('') }}"
+ilm_policy: "{{ (heartbeat_ilm_policy | default(default_ilm_policy)) | default({}) }}"
+ilm_policy_template: "{{ heartbeat_ilm_policy_template | default('') }}"
+ilm_policy_filename: "{{ (heartbeat_ilm_policy_filename | default(heartbeat_ilm_policy_filename)) | default('') }}"
+ilm_policy_file_location: "{{ (heartbeat_ilm_policy_file_location | default(default_ilm_policy_file_location)) | default('') }}"
+
+# beat processors. Empty dictionary sets `add_host_metadata: ~`
+processors: {}
+
+# Logging level
+# Available log levels are error, warning, info, debug
+heartbeat_log_level: "{{ elastic_beat_log_level | default('info') }}"
+
+# List of interfaces with which heartbeat tests connectivity.
+# Defaults to ansible_host on all hosts in the inventory to which heartbeat is deployed
+# heartbeat_icmp_hosts: "{{ groups['heartbeat'] | default(groups['heartbeat_deployment_targets']) | map('extract', hostvars, ['ansible_host']) | list }}"
+
+# Override flag to force Beats to set up index templates. If this is not
+# set, templates are only pushed when the user is either upgrading the
+# beat version or deploying for the first time in the presence of kibana nodes
+elk_beat_setup: false
+
+# Authentication credentials for monitoring when using ELK security features
+# beats_system_username: ""
+# beats_system_password: ""

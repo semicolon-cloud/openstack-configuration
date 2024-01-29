@@ -1,0 +1,171 @@
+# ======================== Elasticsearch Configuration =========================
+#
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+#       Before you set out to tweak and tune the configuration, make sure you
+#       understand what are you trying to accomplish and the consequences.
+#
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please consult the documentation for further information on configuration options:
+# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+#
+cluster.name: {{ cluster_name }}
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#
+# ansible_nodename may be appropriate for your instance
+# If you're having issues with bootstrap skipping, check this.
+node.name: {{ inventory_hostname }}
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+path.data: {{ elastic_data_path }}
+#
+# Path to log files:
+#
+path.logs: /var/log/elasticsearch/
+#
+# Path to shared filesystem repos
+#
+{% if elastic_shared_fs_repos is defined and elastic_shared_fs_repos|length > 0 %}
+path.repo: {{ elastic_shared_fs_repos | json_query("[*].path") | to_json }}
+{% endif %}
+#
+# Set the global default index store. More information on these settings can be
+# found here:
+# <https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-store.html>
+#
+index.store.type: niofs
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+bootstrap.memory_lock: {{ elastic_memory_lock }}
+#
+# Make sure that the heap size is set to about half the memory available
+# on the system and that the owner of the process is allowed to use this
+# limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+#
+network.host: {{ elasticsearch_bind_addresses | list | to_json }}
+{% if elasticsearch_publish_host is defined %}
+network.publish_host: "{{ elasticsearch_publish_host }}"
+{% endif %}
+#
+# Set a custom port for HTTP:
+#
+http.port: {{ elastic_port }}
+#
+# For more information, consult the network module documentation.
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when this node is started:
+# The default list of hosts is ["127.0.0.1", "[::1]"]
+#
+discovery.seed_hosts: {{ _elasticsearch_discovery_seed_hosts | shuffle(seed=inventory_hostname) | to_json }}
+
+#
+# Bootstrap the cluster using an initial set of master-eligible nodes:
+#
+cluster.initial_master_nodes: {{ master_nodes | to_json }}
+#
+# For more information, consult the discovery and cluster formation module documentation.
+#
+{% set node_roles = [] %}
+{% if elasticsearch_node_master | default(master_node) %}
+{%   set _ = node_roles.append('master') %}
+{% endif %}
+{% if elasticsearch_voting_only | default(false) %}
+{%   set _ = node_roles.append('voting_only') %}
+{% endif %}
+{% if elasticsearch_node_data | default(data_node) %}
+{%   set _ = node_roles.append('data') %}
+{% endif %}
+{% if (elasticsearch_node_ingest is defined and elasticsearch_node_ingest) or data_node %}
+{%   set _ = node_roles.append('ingest') %}
+{% endif %}
+{% if (elasticsearch_node_ingest is defined and elasticsearch_node_ingest) or data_node %}
+{%   set _ = node_roles.append('remote_cluster_client') %}
+{% endif %}
+node.roles: {{ node_roles }}
+
+#
+# ---------------------------------- Gateway -----------------------------------
+#
+# Block initial recovery after a full cluster restart until N nodes are started:
+#
+{% if data_node_count is defined %}
+gateway.expected_data_nodes: {{ data_node_count }}
+gateway.recover_after_data_nodes: {{ (((data_node_count | int) // 2) + 1) }}
+{% endif %}
+
+#
+# For more information, consult the gateway module documentation.
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Require explicit names when deleting indices:
+#
+action.destructive_requires_name: true
+
+{% set processors = ((elastic_thread_pool_size | int) > 0) | ternary(elastic_thread_pool_size, 1) %}
+{% if not (elastic_coordination_node | default(false)) | bool %}
+# Thread pool settings. For more on this see the documentation at:
+# <https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html>
+thread_pool:
+  get:
+    queue_size: {{ (processors | int) * 256 }}
+  write:
+    queue_size: {{ (processors | int) * 512 }}
+{% else %}
+# The number of processors is automatically detected, and the thread pool
+# settings are automatically set based on it. In some cases it can be useful to
+# override the number of detected processors. This can be done by explicitly
+# setting the processors setting. On Kibana hosts where elasticsearch is running
+# as a coordination node, the processor count is limited.
+node.processors: {{ processors }}
+{% endif %}
+
+
+# Accepts either a percentage or a byte size value. Set to 20%, meaning that 20%
+# of the total heap allocated to a node will be used as the indexing buffer size
+# shared across all shards.
+indices.memory.index_buffer_size: 20%
+
+# Connection throttling on recovery is limited to 20% of the detected interface
+# speed with a cap of 750mb. This will improce search speeds and reduce general
+# cluster pressure.
+indices.recovery.max_bytes_per_sec: {{ elasticsearch_interface_speed }}mb
+
+# ---------------------------------- X-Pack ------------------------------------
+# X-Pack Monitoring
+#
+xpack.monitoring.collection.enabled: true
+# Set to true to enable machine learning on the node.
+xpack.ml.enabled: false
+# Elastic security
+xpack.security.enabled: {{ elastic_security_enabled | bool | lower }}
+xpack.security.transport.ssl.enabled: {{ elastic_security_enabled | bool | lower }}
+{% if elastic_security_enabled %}
+xpack.security.transport.ssl.verification_mode: certificate
+xpack.security.transport.ssl.client_authentication: required
+xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
+xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
+xpack.security.authc.api_key.enabled: true
+{% endif %}

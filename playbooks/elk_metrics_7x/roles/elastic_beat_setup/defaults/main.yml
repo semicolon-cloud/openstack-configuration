@@ -1,0 +1,49 @@
+---
+# Copyright 2018, Rackspace US, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Each setup flag is run one at a time.
+elastic_setup_flags:
+  - "--index-management"
+  - "--pipelines"
+  # - "--dashboards"
+
+# Setup options are cast as a string with, one option per line.
+elastic_beat_setup_options: >-
+  -E 'output.logstash.enabled=false'
+  -E 'output.elasticsearch.hosts={{ coordination_nodes | to_json }}'
+  {{ (beats_setup_username is defined) | ternary("-E 'output.elasticsearch.username=" ~ beats_setup_username | default("") ~ "'", "") }}
+  {{ (beats_setup_password is defined) | ternary("-E 'output.elasticsearch.password=" ~ beats_setup_password | default("") ~ "'", "") }}
+  -E 'setup.template.enabled=true'
+  -E 'setup.template.overwrite=true'
+
+elastic_beat_kibana_host: "{{ hostvars[groups['kibana'][0]]['ansible_host'] }}"
+
+# The variable defined here will be used to set the environment variable, "no_proxy".
+# This is by default set to elastic_beat_kibana_host, but if using a non-standard
+# interface, the no_proxy enivronment may need to be changed.
+elastic_beat_no_proxy: "{{ elastic_beat_kibana_host }}"
+
+# Override flag to force set up index templates. If this is not
+# set, templates are only pushed when the user is either upgrading the
+# beat version or deploying for the first time in the presence of kibana nodes
+elk_beat_setup: false
+
+# Username and password for beat setup when using ELK security
+# beats_setup_username: ""
+# beats_setup_password: ""
+
+# Authentication credentials for monitoring when using ELK security features
+# beats_system_username: ""
+# beats_system_password: ""

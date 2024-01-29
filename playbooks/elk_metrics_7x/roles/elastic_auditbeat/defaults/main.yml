@@ -1,0 +1,48 @@
+---
+# Copyright 2018, Vexxhost, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+auditbeat_service_state: restarted
+
+auditbeat_ilm_policy_name: "auditbeat-{{ beat_version }}"
+auditbeat_ilm_policy_template: "auditbeat-{{ beat_version }}"
+auditbeat_ilm_policy_filename: "auditbeat-ilm-policy.json"
+auditbeat_ilm_policy_file_location: "/etc/auditbeat"
+
+ilm_policy_name: "{{ auditbeat_ilm_policy_name | default('') }}"
+ilm_policy: "{{ (auditbeat_ilm_policy | default(default_ilm_policy)) | default({}) }}"
+ilm_policy_template: "{{ auditbeat_ilm_policy_template | default('') }}"
+ilm_policy_filename: "{{ (auditbeat_ilm_policy_filename | default(default_ilm_policy_filename)) | default('') }}"
+ilm_policy_file_location: "{{ (auditbeat_ilm_policy_file_location | default(default_ilm_policy_file_location)) | default('') }}"
+
+# beat processors. Empty dictionary sets `add_host_metadata: ~`
+processors: {}
+
+# Logging level
+# Available log levels are error, warning, info, debug
+auditbeat_log_level: "{{ elastic_beat_log_level | default('info') }}"
+
+# Override flag to ignore the system socket dataset. This can be resource-intensive,
+# particularly when auditbeat is deployed to a container host, and largely overlaps
+# with Packetbeat data
+auditbeat_ignore_socket_data: false
+
+# Override flag to force Beats to set up index templates. If this is not
+# set, templates are only pushed when the user is either upgrading the
+# beat version or deploying for the first time in the presence of kibana nodes
+elk_beat_setup: false
+
+# Authentication credentials for monitoring when using ELK security features
+# beats_system_username: ""
+# beats_system_password: ""

@@ -1,0 +1,58 @@
+---
+# Copyright 2018, Rackspace US, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+- name: If a keyfile is provided, copy the gpg keyfile to the key location
+  copy:
+    src: "gpg/{{ item.id }}"
+    dest: "{{ item.file }}"
+    mode: '0644'
+  with_items: "{{ elastic_gpg_keys | selectattr('file','defined') | list }}"
+
+- name: Install Elastic gpg keys
+  apt_key:
+    data: "{{ key.data | default(omit) }}"
+    file: "{{ key.file | default(omit) }}"
+    id: "{{ key.id | default(omit) }}"
+    keyring: "{{ key.keyring | default(omit) }}"
+    keyserver: "{{ key.keyserver | default(omit) }}"
+    state: "{{ key.state | default('present') }}"
+    url: "{{ key.url | default(omit) }}"
+    validate_certs: "{{ key.validate_certs | default('yes') }}"
+  with_items: "{{ elastic_gpg_keys }}"
+  loop_control:
+    loop_var: key
+  register: _add_apt_keys
+  until: _add_apt_keys is success
+  retries: 5
+  delay: 2
+  tags:
+    - package_install
+
+- name: add elk repo to apt sources list
+  apt_repository:
+    repo: "{{ elastic_repo.repo }}"
+    state: "{{ elastic_repo.state }}"
+    filename: "{{ elastic_repo.filename | default(omit) }}"
+  register: _apt_task
+  until: _apt_task is success
+  retries: 3
+  delay: 2
+  tags:
+    - package_install
+
+- name: Add PPA (legacy)
+  apt_repository:
+    repo: "{{ item }}"
+  with_items: "{{ elastic_repo_ppas }}"

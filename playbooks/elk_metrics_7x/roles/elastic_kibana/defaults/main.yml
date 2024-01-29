@@ -1,0 +1,47 @@
+---
+# Copyright 2018, Rackspace US, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+kibana_enable_basic_auth: false
+
+# kibana vars
+kibana_interface: 0.0.0.0
+kibana_port: 5601
+kibana_username: admin
+kibana_password: admin
+kibana_nginx_port: 81
+kibana_server_name: "{{ ansible_hostname }}"
+kibana_index_on_elasticsearch: "http://{{ hostvars[groups['elastic'][0]]['ansible_host'] }}:{{ elastic_port}}/.kibana"
+kibana_elastic_request_timeout: 1800000
+
+# If unset, the protocol and port default to http and elastic_port
+# respectively
+kibana_elastic_endpoints:
+  - "http://127.0.0.1:{{ elastic_port }}"
+
+# The following must be set in order to to allow kibana load balancing
+# otherwise they are set individually per Kibana instance
+# The key used to encrypt Elasticsearch reports
+# kibana_reporting_encryption_key: ""
+# The key used to encrypt kibana session cookies
+# kibana_security_encryption_key: ""
+
+# The URL which users access Kibana from
+# kibana_base_url: ""
+
+# The following are required to grant Kibana access to Elasticsearch
+# when security is enabled. The preferred method for setting the
+# password is to use the Kibana keystore.
+# kibana_system_username: ""
+# kibana_system_password: ""
