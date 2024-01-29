@@ -1097,3 +1097,6 @@ haproxy_hosts:
 # enable this feature, set the ``keepalived_external_ping_address`` and
 # ``keepalived_internal_ping_address`` variables in the ``user_variables.yml``
 # file.
+prometheus_hosts:
+  inst-6c3be5190a66:
+    ip: 172.29.236.17

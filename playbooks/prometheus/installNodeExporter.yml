@@ -21,11 +21,6 @@
   tasks:
     - name: Refresh local facts
       setup:
-        gather_subset:
-        - 'architecture'
-    - debug:
-        msg: "{{ lookup('env', 'ANSIBLE_INJECT_FACT_VARS') }}"
-#        var: vars
 
 - name: node_exporter
   hosts: hosts
