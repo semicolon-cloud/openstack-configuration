@@ -24,8 +24,6 @@
 
 - name: node_exporter
   hosts: hosts
-  vars_files:
-    - vars/variables.yml
   roles:
     - role: prometheus.prometheus.node_exporter
   

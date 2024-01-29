@@ -9,8 +9,6 @@
 
 - name: prometheus
   hosts: prometheus_containers
-  vars_files:
-    - vars/variables.yml
   vars:
     prometheus_web_listen_address: "{{ansible_host}}:9090"
   roles:
