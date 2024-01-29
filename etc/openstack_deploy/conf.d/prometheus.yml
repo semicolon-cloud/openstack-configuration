@@ -1,0 +1,4 @@
+
+prometheus_hosts:
+  inst-6c3be5190a66:
+    ip: 172.29.236.17
