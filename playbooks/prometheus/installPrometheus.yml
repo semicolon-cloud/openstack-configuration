@@ -1,14 +1,14 @@
 
 - name: Refresh local facts
   gather_facts: false
-  hosts: prometheus_hosts
+  hosts: prometheus_all
   tasks:
     - name: Refresh local facts
       setup:
 
 
 - name: prometheus
-  hosts: prometheus_hosts
+  hosts: prometheus_all
   vars_files:
     - vars/variables.yml
   roles:

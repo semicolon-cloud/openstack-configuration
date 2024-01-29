@@ -1,0 +1,20 @@
+---
+component_skel:
+  prometheus:
+    belongs_to:
+      - prometheus_all
+
+container_skel:
+  prometheus_container:
+    belongs_to:
+      - prometheus_containers
+    contains:
+      - prometheus
+
+physical_skel:
+  prometheus_containers:
+    belongs_to:
+      - all_containers
+  prometheus_hosts:
+    belongs_to:
+      - hosts
