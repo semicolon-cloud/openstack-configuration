@@ -16,9 +16,6 @@
 - name: Deploy Grafana
   hosts: grafana_containers
   become: true
-  vars_files:
-    - vars/variables.yml
-
   pre_tasks:
     - name: Galera database block
       block:
@@ -89,7 +86,5 @@
     service_group: grafana_containers
     service_variable: "grafana_haproxy_services"
   when: groups[service_group] | length > 0
-  vars_files:
-  - 'vars/variables.yml'
   tags:
     - haproxy-service-config
