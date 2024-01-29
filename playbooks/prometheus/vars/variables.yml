@@ -3,18 +3,14 @@ node_exporter_web_listen_address: "{{ ansible_host }}:9100"
 prometheus_targets:
   node_exporter: 
     - targets: >- 
-        {% set server_ip = [] %}
         {% for ip in groups['hosts']  %}
-        {{ server_ip.append( ip+":9100" ) }}
+        - {{ip}}+":9104"
         {% endfor %}
-        {{ server_ip | to_yaml }}
   mysqld_exporter: 
     - targets: >- 
-        {% set server_ip = [] %}
         {% for ip in groups['galera_container']  %}
-        {{ server_ip.append( ip+":9104" ) }}
+        - {{ip}}+":9104"
         {% endfor %}
-        {{ server_ip | to_yaml}}
 
 prometheus_scrape_configs:
   - job_name: "node_exporter"    # Custom scrape job, here using `static_config`
