@@ -30,7 +30,6 @@ haproxy_grafana_service:
   haproxy_service_enabled: "{{ groups['grafana_containers'] is defined and groups['grafana_containers'] | length > 0 }}"
   haproxy_backend_ssl: false
   haproxy_backend_ca: "{{ grafana_haproxy_backend_ca | default(openstack_haproxy_backend_ca) }}"
-  haproxy_stick_table: "{{ openstack_haproxy_grafana_stick_table }}"
   haproxy_map_entries:
     - name: route
       order: 99
