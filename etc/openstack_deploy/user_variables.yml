@@ -233,6 +233,8 @@ haproxy_ssl_letsencrypt_domains:
 - ws.container.cloud.seda.club
 - designate.cloud.seda.club
 - swift.cloud.seda.club
+- grafana.admin.cloud.seda.club
+- kibana.admin.cloud.seda.club
 
 haproxy_security_headers_csp_report_only: false
 haproxy_horizon_csp: >
