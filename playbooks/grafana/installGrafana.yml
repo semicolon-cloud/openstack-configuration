@@ -81,6 +81,7 @@
     - role: grafana.grafana.grafana
 
 - name: Debug
+  hosts: grafana_containers
   tasks:
   - name: show stuff
     ansible.builtin.debug:
