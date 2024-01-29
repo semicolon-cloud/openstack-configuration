@@ -1,1 +1,15 @@
 node_exporter_web_listen_address: "{{ ansible_host }}:9100"
+
+prometheus_targets:
+  node_exporter: >- 
+    {% set server_ip = [] %}
+    {% for ip in groups['hosts']  %}
+    {{ server_ip.append( ip+":9100" ) }}
+    {% endfor %}
+    { server_ip }
+  mysqld_exporter: >-
+    {% set server_ip = [] %}
+    {% for ip in groups['galera_container']  %}
+    {{ server_ip.append( ip+":9104" ) }}
+    {% endfor %}
+    { server_ip }
