@@ -14,7 +14,7 @@
 # limitations under the License.
 
 - name: Deploy Grafana
-  hosts: grafana_all
+  hosts: grafana_containers
   become: true
   vars_files:
     - vars/variables.yml
