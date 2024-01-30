@@ -472,8 +472,8 @@ neutron_wsgi_processes_max: 3
 
 keystone_wsgi_processes_max: 3
 
-# heat_engine_workers: 4
-# heat_api_workers: 4 heat is reasonable
+heat_engine_workers: 3
+heat_api_workers: 3 # heat is reasonable
 
 glance_api_workers: 3
 glance_wsgi_processes_max: 3
