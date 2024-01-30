@@ -462,3 +462,6 @@ apt_pinned_packages: "{{ elastic_apt_pin_packages | default(_elastic_apt_pin_pac
 
 # kibana_setup_username: ""
 # kibana_setup_password: ""
+
+logstash_heap_size: 1024
+elastic_heap_size: 2048
