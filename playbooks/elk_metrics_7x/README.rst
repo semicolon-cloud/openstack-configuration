@@ -574,7 +574,7 @@ state variable, `elk_package_state`, to latest.
 .. code-block:: bash
 
     cd /opt/openstack-ansible-ops/elk_metrics_7x
-    ansible-playbook site.yml $USER_VARS -e 'elk_package_state="latest"'
+    ANSIBLE_INJECT_FACT_VARS=true sudo -E  ansible-playbook site.yml $USER_VARS -e 'elk_package_state="latest"'
 
 
 Forcing the Elasticsearch cluster retention policy to refresh
