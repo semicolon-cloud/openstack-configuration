@@ -279,12 +279,44 @@ designate_service_publicuri: "https://designate.cloud.seda.club"
 
 swift_service_publicurl: "https://swift.cloud.seda.club/v1/AUTH_%(tenant_id)s"
 
+profiler_overrides: &os_profiler
+  profiler:
+    enabled: true
+    trace_sqlalchemy: true
+    hmac_keys: "{{ profiler_token }}"  # This needs to be set consistently throughout the deployment
+    connection_string: "Elasticsearch://{{ internal_lb_vip_address }}:9201"
+    es_doc_type: "notification"
+    es_scroll_time: "2m"
+    es_scroll_size: "10000"
+    filter_error_trace: "false"
+
+aodh_aodh_conf_overrides: *os_profiler
+barbican_config_overrides: *os_profiler
+ceilometer_ceilometer_conf_overrides: *os_profiler
+cinder_cinder_conf_overrides: *os_profiler
+designate_designate_conf_overrides: *os_profiler
+glance_glance_api_conf_overrides: *os_profiler
+gnocchi_conf_overrides: *os_profiler
+heat_heat_conf_overrides: *os_profiler
+horizon_config_overrides: *os_profiler
+ironic_ironic_conf_overrides: *os_profiler
+keystone_keystone_conf_overrides: *os_profiler
+magnum_config_overrides: *os_profiler
+neutron_neutron_conf_overrides: *os_profiler
+nova_nova_conf_overrides: *os_profiler
+octavia_octavia_conf_overrides: *os_profiler
+rally_config_overrides: *os_profiler
+sahara_conf_overrides: *os_profiler
+swift_swift_conf_overrides: *os_profiler
+tacker_tacker_conf_overrides: *os_profiler
+trove_config_overrides: *os_profiler
 
 zun_zun_conf_overrides:
   websocket_proxy:
     allowed_origins:
     - 'ws.container.cloud.seda.club'
     - 'cloud.seda.club'
+  <<: *os_profiler
 
 designate_pools_yaml:
   - name: "internal"

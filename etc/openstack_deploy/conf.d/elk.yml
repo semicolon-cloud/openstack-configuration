@@ -5,20 +5,22 @@
 # components can scale independently of one another.
 
 kibana_hosts:
-  infra01:
-    ip: 172.22.8.24
-  infra02:
-    ip: 172.22.8.25
-  infra03:
-    ip: 172.22.8.26
+  inst-6c3be5190a66:
+    ip: 172.29.236.17
+  # inst-6c3be5190a72:
+  #   ip: 172.29.236.11
+  # inst-6c3be511f4b0:
+  #   ip: 172.29.236.14
+  # inst-6c3be511f46b:
+  #   ip: 172.29.236.15
 
 elastic-logstash_hosts:
-  logging01:
-    ip: 172.22.8.27
-  logging02:
-    ip: 172.22.8.28
-  logging03:
-    ip: 172.22.8.29
+  inst-6c3be5190a72:
+    ip: 172.29.236.11
+  inst-6c3be511f4b0:
+    ip: 172.29.236.14
+  inst-6c3be511f46b:
+    ip: 172.29.236.15
 
 #elastic_hosts:
 #  elastic01:
@@ -37,9 +39,9 @@ elastic-logstash_hosts:
 #    ip: 172.22.8.29
 
 apm-server_hosts:
-  logging01:
-    ip: 172.22.8.27
-  logging02:
-    ip: 172.22.8.28
-  logging03:
-    ip: 172.22.8.29
+  inst-6c3be5190a72:
+    ip: 172.29.236.11
+  inst-6c3be511f4b0:
+    ip: 172.29.236.14
+  inst-6c3be511f46b:
+    ip: 172.29.236.15
