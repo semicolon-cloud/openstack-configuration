@@ -1,0 +1,5 @@
+---
+collections:
+- name: middleware_automation.keycloak
+  version: 2.0.2
+  type: galaxy

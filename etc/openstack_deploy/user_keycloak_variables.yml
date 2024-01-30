@@ -1,0 +1,30 @@
+# Keycloak vars
+keycloak_db_name: keycloak
+keycloak_db_user: keycloak
+
+keycloak_admin_user: admin
+
+keycloak_bind_address: "{{ ansible_host }}"
+keycloak_host: "http://accounts.seda.club/"
+keycloak_db_enabled: true
+
+haproxy_keycloak_service:
+  haproxy_backend_only: true    #only describe the backends, frontend is in `base` via haproxy_all group vars
+  haproxy_service_name: keycloak
+  haproxy_backend_nodes: "{{ groups['keycloak_containers'] | default([]) }}"
+  haproxy_backend_port: "3000"
+  haproxy_balance_type: http
+  haproxy_balance_alg: source
+  haproxy_backend_options:
+    - "httpchk HEAD /auth/login/ HTTP/1.0\\r\\nUser-agent:\\ osa-haproxy-healthcheck"
+  haproxy_service_enabled: "{{ groups['keycloak_containers'] is defined and groups['keycloak_containers'] | length > 0 }}"
+  haproxy_backend_ssl: false
+  haproxy_backend_ca: "{{ keycloak_haproxy_backend_ca | default(openstack_haproxy_backend_ca) }}"
+  haproxy_map_entries:
+    - name: route
+      order: 99
+      entries:
+        - 'keycloak.admin.cloud.seda.club keycloak-back'
+
+keycloak_haproxy_services:
+  - "{{ haproxy_keycloak_service | combine(haproxy_keycloak_service_overrides | default({})) }}"
