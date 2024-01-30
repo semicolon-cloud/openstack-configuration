@@ -12,7 +12,7 @@ haproxy_keycloak_service:
   haproxy_backend_only: true    #only describe the backends, frontend is in `base` via haproxy_all group vars
   haproxy_service_name: keycloak
   haproxy_backend_nodes: "{{ groups['keycloak_containers'] | default([]) }}"
-  haproxy_backend_port: "3000"
+  haproxy_backend_port: "8080"
   haproxy_balance_type: http
   haproxy_balance_alg: source
   haproxy_backend_options:
@@ -24,7 +24,7 @@ haproxy_keycloak_service:
     - name: route
       order: 99
       entries:
-        - 'keycloak.admin.cloud.seda.club keycloak-back'
+        - 'accounts.seda.club keycloak-back'
 
 keycloak_haproxy_services:
   - "{{ haproxy_keycloak_service | combine(haproxy_keycloak_service_overrides | default({})) }}"
