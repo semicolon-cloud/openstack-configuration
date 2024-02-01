@@ -402,10 +402,15 @@ nova_virt_types:
     nova_compute_driver: libvirt.LibvirtDriver
     nova_reserved_host_memory_mb: 0
     nova_scheduler_tracks_instance_changes: False
+  kvm:
+    nova_compute_driver: libvirt.LibvirtDriver
+    nova_reserved_host_memory_mb: 2048
+    nova_scheduler_tracks_instance_changes: True
 nova_virt_type: lxc
 
 nova_supported_virt_types:
   - lxc
+  - kvm
 
 nova_compute_lxc_packages:
   - libvirt-daemon
