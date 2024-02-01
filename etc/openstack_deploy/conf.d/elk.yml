@@ -8,7 +8,7 @@ kibana_hosts:
   inst-6c3be5190a66:
     ip: 172.29.236.17
   # inst-6c3be5190a72:
-  #   ip: 172.29.236.11
+  #   ip: 172.29.236.20
   # inst-6c3be511f4b0:
   #   ip: 172.29.236.14
   # inst-6c3be511f46b:
@@ -16,7 +16,7 @@ kibana_hosts:
 
 elastic-logstash_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:
@@ -40,7 +40,7 @@ elastic-logstash_hosts:
 
 apm-server_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:

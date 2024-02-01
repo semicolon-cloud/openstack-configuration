@@ -1486,10 +1486,10 @@
                 }
             },
             "inst-6c3be5190a72": {
-                "ansible_host": "172.29.236.11",
+                "ansible_host": "172.29.236.20",
                 "cinder_backends": {
                     "lvm": {
-                        "iscsi_ip_address": "172.29.244.11",
+                        "iscsi_ip_address": "172.29.244.20",
                         "volume_backend_name": "LVM_iSCSI",
                         "volume_driver": "cinder.volume.drivers.lvm.LVMVolumeDriver",
                         "volume_group": "cinder-volumes"
@@ -1498,7 +1498,7 @@
                 "cinder_default_availability_zone": "cinderAZ_1",
                 "cinder_storage_availability_zone": "cinderAZ_1",
                 "component": "swift_cont",
-                "container_address": "172.29.236.11",
+                "container_address": "172.29.236.20",
                 "container_name": "inst-6c3be5190a72",
                 "container_networks": {
                     "eth11_address": {
@@ -1512,7 +1512,7 @@
                         "type": "veth"
                     },
                     "management_address": {
-                        "address": "172.29.236.11",
+                        "address": "172.29.236.20",
                         "bridge": "br-mgmt",
                         "netmask": "255.255.252.0",
                         "type": "veth"
@@ -1533,7 +1533,7 @@
                 "container_tech": "lxc",
                 "container_types": "inst-6c3be5190a72-host_containers",
                 "is_metal": true,
-                "management_address": "172.29.236.11",
+                "management_address": "172.29.236.20",
                 "physical_host": "inst-6c3be5190a72",
                 "physical_host_group": "swift_hosts",
                 "properties": {

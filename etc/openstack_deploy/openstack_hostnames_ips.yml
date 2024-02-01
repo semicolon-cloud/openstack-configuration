@@ -161,8 +161,8 @@
         "container_address": "172.29.236.17"
     },
     "inst-6c3be5190a72": {
-        "ansible_host": "172.29.236.11",
-        "container_address": "172.29.236.11"
+        "ansible_host": "172.29.236.20",
+        "container_address": "172.29.236.20"
     },
     "inst-6c3be5190a72_cinder_api_container-ed493e76": {
         "ansible_host": "172.29.239.75",

@@ -80,8 +80,8 @@ cidr_networks:
 # Example:
 #
 # The management network includes a router (gateway) on 172.29.236.1 and
-# DNS servers on 172.29.236.11-12. The deployment includes seven target
-# servers on 172.29.236.101-103, 172.29.236.111, 172.29.236.121, and
+# DNS servers on 172.29.236.20-12. The deployment includes seven target
+# servers on 172.29.236.101-103, 172.29.236.201, 172.29.236.121, and
 # 172.29.236.131. However, the inventory generator automatically excludes
 # these IP addresses. The deployment host itself isn't automatically
 # excluded. Network policy at this particular example organization
@@ -329,7 +329,7 @@ global_overrides:
 #
 shared-infra_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:
@@ -355,7 +355,7 @@ shared-infra_hosts:
 #
 repo-infra_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:
@@ -374,7 +374,7 @@ repo-infra_hosts:
 #
 coordination_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:
@@ -400,7 +400,7 @@ coordination_hosts:
 #
 os-infra_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:
@@ -427,7 +427,7 @@ os-infra_hosts:
 #
 identity_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:
@@ -461,7 +461,7 @@ identity_hosts:
 #
 network_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:
@@ -490,7 +490,7 @@ network_hosts:
 #
 network-northd_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:
@@ -510,7 +510,7 @@ network-gateway_hosts:
   inst-6c3be5190a14:
     ip: 172.29.236.12
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-2c44fd1862cd:
     ip: 172.29.236.9
   inst-6c3be5190a16:
@@ -557,7 +557,7 @@ compute_hosts:
   inst-6c3be5190a14:
     ip: 172.29.236.12
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-2c44fd1862cd:
     ip: 172.29.236.9
   inst-6c3be5190a16:
@@ -624,7 +624,7 @@ compute_hosts:
 #     ip: 172.29.236.103
 storage-infra_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:
@@ -835,7 +835,7 @@ storage_hosts:
         limit_container_types: cinder_volume
   
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
     container_vars:
       cinder_storage_availability_zone: cinderAZ_1
       cinder_default_availability_zone: cinderAZ_1
@@ -844,7 +844,7 @@ storage_hosts:
           volume_backend_name: LVM_iSCSI
           volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
           volume_group: cinder-volumes
-          iscsi_ip_address: "172.29.244.11"
+          iscsi_ip_address: "172.29.244.20"
         limit_container_types: cinder_volume
   inst-2c44fd1862cd:
     ip: 172.29.236.9

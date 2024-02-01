@@ -2,7 +2,7 @@
 # The infra nodes that will be running the zun services
 zun-infra_hosts:
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-6c3be511f4b0:
     ip: 172.29.236.14
   inst-6c3be511f46b:
@@ -21,7 +21,7 @@ zun-compute_hosts:
   inst-6c3be5190a14:
     ip: 172.29.236.12
   inst-6c3be5190a72:
-    ip: 172.29.236.11
+    ip: 172.29.236.20
   inst-2c44fd1862cd:
     ip: 172.29.236.9
   inst-6c3be5190a16:
