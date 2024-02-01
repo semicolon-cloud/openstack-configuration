@@ -1,0 +1,60 @@
+
+# ceph-mon containers
+ceph-mon_hosts:
+  inst-6c3be5190a72:
+    ip: 172.29.236.20
+  inst-6c3be511f4b0:
+    ip: 172.29.236.14
+  inst-6c3be511f46b:
+    ip: 172.29.236.15
+
+# ceph-mds containers
+ceph-mds_hosts: 
+  inst-6c3be5190a72:
+    ip: 172.29.236.20
+  inst-6c3be511f4b0:
+    ip: 172.29.236.14
+  inst-6c3be511f46b:
+    ip: 172.29.236.15
+
+# ganesha-nfs hosts
+ceph-nfs_hosts: 
+  inst-6c3be5190a72:
+    ip: 172.29.236.20
+  inst-6c3be511f4b0:
+    ip: 172.29.236.14
+  inst-6c3be511f46b:
+    ip: 172.29.236.15
+
+
+# The nodes that the Ceph OSD disks will be running on
+ceph-osd_hosts:
+  inst-6c3be5190a66:
+    ip: 172.29.236.17
+  inst-10604b858bb0:
+    ip: 172.29.236.16
+  inst-6c3be511f4ba:
+    ip: 172.29.236.13
+  inst-6c3be5190a14:
+    ip: 172.29.236.12
+  inst-2c44fd1862cd:
+    ip: 172.29.236.9
+  inst-6c3be5190a16:
+    ip: 172.29.236.8
+  inst-6c3be5165177:
+    ip: 172.29.236.7
+  inst-6c3be5165172:
+    ip: 172.29.236.6
+  inst-6c3be51909f3:
+    ip: 172.29.236.5
+  inst-6c3b35190a1f:
+    ip: 172.29.236.18
+
+# The nodes that the Ceph RadosGW object gateways will be running on
+ceph-rgw_hosts:
+  inst-6c3be5190a72:
+    ip: 172.29.236.20
+  inst-6c3be511f4b0:
+    ip: 172.29.236.14
+  inst-6c3be511f46b:
+    ip: 172.29.236.15
