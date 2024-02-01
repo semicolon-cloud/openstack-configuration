@@ -8,9 +8,9 @@ fsid: 37219ed3-23f0-4706-995f-759efe228770 # Replace with your generated UUID
 ## ceph-ansible settings
 ## See https://github.com/ceph/ceph-ansible/tree/master/group_vars for
 ## additional configuration options available.
-monitor_address_block: "{{ cidr_networks.storage }}"
-public_network: "{{ cidr_networks.storage }}"
-cluster_network: "{{ cidr_networks.storage }}"
+monitor_address_block: "172.29.244.0/22"
+public_network: "172.29.244.0/22"
+cluster_network: "172.29.244.0/22"
 journal_size: 10240 # size in MB
 # ceph-ansible automatically creates pools & keys for OpenStack services
 openstack_config: true
