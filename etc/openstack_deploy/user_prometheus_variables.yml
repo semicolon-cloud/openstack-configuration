@@ -5,7 +5,9 @@ prometheus_targets:
     - targets: "{{ groups['hosts']|product([':9100'])|map('flatten')|map('join')|list }}"
   mysqld_exporter: 
     - targets: "{{ groups['galera_container']|product([':9104'])|map('flatten')|map('join')|list }}"
-  
+  ceph_exporter:
+    - targets: "{{ groups['ceph-mgr'] | product([':9283']) | map('flatten') | map('join') | list }}"
+
 prometheus_scrape_configs:
   - job_name: "node_exporter"    # Custom scrape job, here using `static_config`
     metrics_path: "/metrics"
@@ -16,3 +18,8 @@ prometheus_scrape_configs:
     file_sd_configs:
       - files:
           - "{{ prometheus_config_dir }}/file_sd/mysqld_exporter.yml"
+  - job_name: "ceph_exporter"
+    metrics_path: "/metrics"
+    file_sd_configs:
+      - files:
+          - "{{ prometheus_config_dir }}/file_sd/ceph_exporter.yml"
