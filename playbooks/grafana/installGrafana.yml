@@ -17,65 +17,65 @@
   hosts: grafana_containers
   become: true
   pre_tasks:
-    - name: Galera database block
-      block:
-        - name: Check for db password
-          fail:
-            msg: >-
-              The database root login user is undefined
-          when:
-            - galera_root_user is undefined
+    # - name: Galera database block
+    #   block:
+    #     - name: Check for db password
+    #       fail:
+    #         msg: >-
+    #           The database root login user is undefined
+    #       when:
+    #         - galera_root_user is undefined
 
-        - name: Check for db password
-          fail:
-            msg: >-
-              The database root password is undefined
-          when:
-            - galera_root_password is undefined
+    #     - name: Check for db password
+    #       fail:
+    #         msg: >-
+    #           The database root password is undefined
+    #       when:
+    #         - galera_root_password is undefined
 
-        - name: Install PyMySQL
-          package:
-            name: python3-pymysql
+    #     - name: Install PyMySQL
+    #       package:
+    #         name: python3-pymysql
 
-        - name: Create DB for service
-          mysql_db:
-            login_user: "{{ galera_root_user }}"
-            login_password: "{{ galera_root_password }}"
-            login_host: "{{ galera_address | default('127.0.0.1') }}"
-            name: "{{ grafana_db_name }}"
-            state: "present"
-          delegate_to: "{{ groups['galera_all'][0] }}"
+    #     - name: Create DB for service
+    #       mysql_db:
+    #         login_user: "{{ galera_root_user }}"
+    #         login_password: "{{ galera_root_password }}"
+    #         login_host: "{{ galera_address | default('127.0.0.1') }}"
+    #         name: "{{ grafana_db_name }}"
+    #         state: "present"
+    #       delegate_to: "{{ groups['galera_all'][0] }}"
 
-        - name: Grant access to the DB for the service
-          mysql_user:
-            login_user: "{{ galera_root_user }}"
-            login_password: "{{ galera_root_password }}"
-            login_host: "{{ galera_address | default('127.0.0.1') }}"
-            name: "{{ grafana_db_user }}"
-            password: "{{ grafana_db_password }}"
-            host: "{{ item }}"
-            state: "present"
-            priv: "{{ grafana_db_name }}.*:ALL"
-          with_items:
-            - "localhost"
-            - "%"
-          delegate_to: "{{ groups['galera_all'][0] }}"
+    #     - name: Grant access to the DB for the service
+    #       mysql_user:
+    #         login_user: "{{ galera_root_user }}"
+    #         login_password: "{{ galera_root_password }}"
+    #         login_host: "{{ galera_address | default('127.0.0.1') }}"
+    #         name: "{{ grafana_db_user }}"
+    #         password: "{{ grafana_db_password }}"
+    #         host: "{{ item }}"
+    #         state: "present"
+    #         priv: "{{ grafana_db_name }}.*:ALL"
+    #       with_items:
+    #         - "localhost"
+    #         - "%"
+    #       delegate_to: "{{ groups['galera_all'][0] }}"
 
-        - name: Set grafana database fact
-          set_fact:
-            grafana_database:
-              type: mysql
-              host: "{{ galera_address }}:3306"
-              name: "{{ grafana_db_name }}"
-              user: "{{ grafana_db_user }}"
-              password: "{{ grafana_db_password }}"
-      when:
-        - (groups['galera_all'] | default([])) | length > 0
+    #     - name: Set grafana database fact
+    #       set_fact:
+    #         grafana_database:
+    #           type: mysql
+    #           host: "{{ galera_address }}:3306"
+    #           name: "{{ grafana_db_name }}"
+    #           user: "{{ grafana_db_user }}"
+    #           password: "{{ grafana_db_password }}"
+    #   when:
+    #     - (groups['galera_all'] | default([])) | length > 0
 
-    - name: Ensure https repos function
-      apt:
-        pkg: "apt-transport-https"
-        state: "latest"
+    # - name: Ensure https repos function
+    #   apt:
+    #     pkg: "apt-transport-https"
+    #     state: "latest"
 
   roles:
     - role: grafana.grafana.grafana
