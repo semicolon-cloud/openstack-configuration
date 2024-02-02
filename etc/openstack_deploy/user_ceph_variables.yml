@@ -12,6 +12,9 @@ monitor_address_block: "172.29.244.0/22"
 public_network: "172.29.244.0/22"
 cluster_network: "172.29.244.0/22"
 journal_size: 10240 # size in MB
+devices:
+  - '/dev/sda'
+  - '/dev/sdc'
 # ceph-ansible automatically creates pools & keys for OpenStack services
 openstack_config: true
 cinder_ceph_client: cinder
