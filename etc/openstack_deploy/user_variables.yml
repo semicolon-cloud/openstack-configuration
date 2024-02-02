@@ -503,3 +503,5 @@ galera_additional_users:
       MAX_USER_CONNECTIONS: 3
     check_hostname: false
     state: present
+
+no_log_on_ceph_key_tasks: false
