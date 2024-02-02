@@ -269,7 +269,7 @@ global_overrides:
         container_bridge: "br-storage"
         container_type: "veth"
         container_interface: "eth2"
-        container_mtu: "1000"
+        container_mtu: "1500"
         ip_from_q: "storage"
     - network:
         group_binds:
@@ -277,7 +277,7 @@ global_overrides:
         container_bridge: "br-vxlan"
         container_type: "veth"
         container_interface: "eth10"
-        container_mtu: "1000"
+        container_mtu: "1500"
         ip_from_q: "tunnel"
         type: geneve
         range: "1:1000"
