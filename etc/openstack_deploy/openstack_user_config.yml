@@ -262,6 +262,7 @@ global_overrides:
           - nova_compute
           - ceph-mon
           - ceph-osd
+          - ceph-mds
           - manila_share
 #           # Uncomment the next line if using swift with a storage network.
 #           # - swift_proxy
