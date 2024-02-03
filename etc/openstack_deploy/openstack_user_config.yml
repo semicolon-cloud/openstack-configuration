@@ -577,7 +577,7 @@ compute_hosts:
   inst-1c1b0d194212:
     ip: 172.29.236.10
     host_vars:
-     nova_virt_type: kvm # yep.
+      nova_virt_type: kvm # yep.
 #
 # --------
 #
