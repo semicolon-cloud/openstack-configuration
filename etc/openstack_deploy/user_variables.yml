@@ -279,6 +279,7 @@ cinder_service_v3_publicuri: "https://volume.cloud.seda.club"
 designate_service_publicuri: "https://designate.cloud.seda.club"
 
 swift_service_publicurl: "https://swift.cloud.seda.club/v1/AUTH_%(tenant_id)s"
+radosgw_service_publicuri: "https://s4.cloud.seda.club"
 
 profiler_overrides: &os_profiler
   profiler:

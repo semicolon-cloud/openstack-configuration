@@ -361,6 +361,24 @@ haproxy_designate_api_service:
       entries:
         - "designate.cloud.seda.club designate_api-back"
 
+haproxy_ceph_rgw_service:
+  haproxy_service_name: ceph-rgw
+  haproxy_backend_nodes: "{{ (groups['ceph-rgw'] is defined and groups['ceph-rgw'] | length > 0) | ternary(groups['ceph-rgw'], ceph_rgws) }}"
+  haproxy_ssl: "{{ haproxy_ssl }}"
+  haproxy_ssl_all_vips: "{{ haproxy_ssl_all_vips }}"
+  haproxy_balance_alg: source
+  haproxy_port: "{{ radosgw_service_port | default(7980) }}"
+  haproxy_balance_type: http
+  haproxy_backend_options:
+    - httpchk HEAD /
+  haproxy_backend_httpcheck_options:
+    - expect rstatus 200|405
+  haproxy_service_enabled: "{{ (groups['ceph-rgw'] is defined and groups['ceph-rgw'] | length > 0) or (ceph_rgws | length > 0) }}"
+  haproxy_map_entries:
+    - name: route
+      entries:
+        - "s4.cloud.seda.club ceph-rgw-back"
+
 haproxy_swift_proxy_service:
   haproxy_service_name: swift_proxy
   haproxy_backend_nodes: "{{ groups['swift_proxy'] | default([]) }}"
