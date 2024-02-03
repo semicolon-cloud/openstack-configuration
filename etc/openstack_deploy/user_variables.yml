@@ -456,15 +456,6 @@ zun_conductor_workers: 1
 zun_metadata_workers: 1
 zun_wsgi_processes_max: 1
 
-
-swift_account_server_replicator_workers: 1
-swift_server_replicator_workers: 1
-swift_object_replicator_workers: 1
-swift_account_server_workers: 1
-swift_container_server_workers: 1
-swift_object_server_workers: 1
-swift_proxy_server_workers_max: 1
-
 placement_wsgi_processes_max: 1
 
 
