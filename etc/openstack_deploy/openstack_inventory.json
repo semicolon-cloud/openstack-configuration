@@ -35,13 +35,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -79,13 +79,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -135,13 +135,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -190,13 +190,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -245,13 +245,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -298,6 +298,14 @@
                         "interface": "eth1",
                         "netmask": "255.255.252.0",
                         "type": "veth"
+                    },
+                    "storage_address": {
+                        "address": "172.29.246.144",
+                        "bridge": "br-storage",
+                        "interface": "eth2",
+                        "mtu": "1500",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
                     }
                 },
                 "container_tech": "lxc",
@@ -322,7 +330,7 @@
                         "address": "172.29.246.112",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -390,7 +398,7 @@
                         "address": "172.29.246.1",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -417,7 +425,7 @@
                         "address": "172.29.246.247",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -513,7 +521,7 @@
                         "address": "172.29.244.243",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -867,13 +875,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -920,6 +928,14 @@
                         "interface": "eth1",
                         "netmask": "255.255.252.0",
                         "type": "veth"
+                    },
+                    "storage_address": {
+                        "address": "172.29.246.150",
+                        "bridge": "br-storage",
+                        "interface": "eth2",
+                        "mtu": "1500",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
                     }
                 },
                 "container_tech": "lxc",
@@ -944,7 +960,7 @@
                         "address": "172.29.245.158",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1012,7 +1028,7 @@
                         "address": "172.29.246.155",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1039,7 +1055,7 @@
                         "address": "172.29.246.65",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1135,7 +1151,7 @@
                         "address": "172.29.245.24",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1489,13 +1505,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1544,13 +1560,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1599,13 +1615,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1654,13 +1670,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1709,13 +1725,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1764,13 +1780,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1797,7 +1813,7 @@
                 },
                 "cinder_default_availability_zone": "cinderAZ_1",
                 "cinder_storage_availability_zone": "cinderAZ_1",
-                "component": "ceph-osd",
+                "component": "nova_compute",
                 "container_address": "172.29.236.17",
                 "container_name": "inst-6c3be5190a66",
                 "container_networks": {
@@ -1819,13 +1835,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -1835,7 +1851,7 @@
                 "is_metal": true,
                 "management_address": "172.29.236.17",
                 "physical_host": "inst-6c3be5190a66",
-                "physical_host_group": "ceph-osd_hosts",
+                "physical_host_group": "compute_hosts",
                 "properties": {
                     "is_metal": true
                 }
@@ -1958,13 +1974,13 @@
                     },
                     "storage_address": {
                         "bridge": "br-storage",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     },
                     "tunnel_address": {
                         "bridge": "br-vxlan",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -2011,6 +2027,14 @@
                         "interface": "eth1",
                         "netmask": "255.255.252.0",
                         "type": "veth"
+                    },
+                    "storage_address": {
+                        "address": "172.29.247.185",
+                        "bridge": "br-storage",
+                        "interface": "eth2",
+                        "mtu": "1500",
+                        "netmask": "255.255.252.0",
+                        "type": "veth"
                     }
                 },
                 "container_tech": "lxc",
@@ -2035,7 +2059,7 @@
                         "address": "172.29.245.82",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -2103,7 +2127,7 @@
                         "address": "172.29.244.253",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -2130,7 +2154,7 @@
                         "address": "172.29.247.239",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -2226,7 +2250,7 @@
                         "address": "172.29.247.35",
                         "bridge": "br-storage",
                         "interface": "eth2",
-                        "mtu": "1000",
+                        "mtu": "1500",
                         "netmask": "255.255.252.0",
                         "type": "veth"
                     }
@@ -2587,7 +2611,7 @@
                     "network": {
                         "container_bridge": "br-storage",
                         "container_interface": "eth2",
-                        "container_mtu": "1000",
+                        "container_mtu": "1500",
                         "container_type": "veth",
                         "group_binds": [
                             "glance_api",
@@ -2596,6 +2620,7 @@
                             "nova_compute",
                             "ceph-mon",
                             "ceph-osd",
+                            "ceph-mds",
                             "manila_share"
                         ],
                         "ip_from_q": "storage",
@@ -2606,7 +2631,7 @@
                     "network": {
                         "container_bridge": "br-vxlan",
                         "container_interface": "eth10",
-                        "container_mtu": "1000",
+                        "container_mtu": "1500",
                         "container_type": "veth",
                         "group_binds": [
                             "neutron_ovn_controller"
@@ -2643,31 +2668,7 @@
                         "type": "flat"
                     }
                 }
-            ],
-            "swift": {
-                "account": null,
-                "container": null,
-                "drives": [
-                    {
-                        "name": "sdc"
-                    }
-                ],
-                "min_part_hours": 1,
-                "mount_point": "/srv/node",
-                "part_power": 11,
-                "repl_number": 3,
-                "storage_network": "br-storage",
-                "storage_policies": [
-                    {
-                        "policy": {
-                            "default": true,
-                            "index": 0,
-                            "name": "gold"
-                        }
-                    }
-                ],
-                "weight": 100
-            }
+            ]
         }
     },
     "all_containers": {

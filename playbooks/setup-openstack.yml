@@ -13,16 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- import_playbook: os-keystone-install.yml
-- import_playbook: os-barbican-install.yml
-- import_playbook: os-placement-install.yml
-- import_playbook: os-glance-install.yml
-- import_playbook: os-cinder-install.yml
-- import_playbook: os-nova-install.yml
-- import_playbook: os-neutron-install.yml
-- import_playbook: os-heat-install.yml
-- import_playbook: os-horizon-install.yml
-- import_playbook: os-designate-install.yml
+#- import_playbook: os-keystone-install.yml
+#- import_playbook: os-barbican-install.yml
+#- import_playbook: os-placement-install.yml
+#- import_playbook: os-glance-install.yml
+#- import_playbook: os-cinder-install.yml
+#- import_playbook: os-nova-install.yml
+#- import_playbook: os-neutron-install.yml
+#- import_playbook: os-heat-install.yml
+#- import_playbook: os-horizon-install.yml
+#- import_playbook: os-designate-install.yml
 - import_playbook: os-swift-install.yml
 - import_playbook: os-adjutant-install.yml
 - import_playbook: os-gnocchi-install.yml
