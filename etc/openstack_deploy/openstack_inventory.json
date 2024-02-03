@@ -5267,6 +5267,68 @@
             "inst-6c3be511f46b_swift_proxy_container-30006f0f"
         ]
     },
+    "swift-proxy_containers": {
+        "children": [
+            "swift_proxy_container"
+        ],
+        "hosts": []
+    },
+    "swift-proxy_hosts": {
+        "children": [],
+        "hosts": []
+    },
+    "swift-remote_containers": {
+        "children": [
+            "swift_remote_container"
+        ],
+        "hosts": []
+    },
+    "swift-remote_hosts": {
+        "children": [],
+        "hosts": []
+    },
+    "swift_acc": {
+        "children": [],
+        "hosts": []
+    },
+    "swift_acc_container": {
+        "hosts": []
+    },
+    "swift_all": {
+        "children": [
+            "swift_proxy",
+            "swift_acc",
+            "swift_obj",
+            "swift_cont"
+        ],
+        "hosts": []
+    },
+    "swift_cont": {
+        "children": [],
+        "hosts": []
+    },
+    "swift_cont_container": {
+        "hosts": []
+    },
+    "swift_containers": {
+        "children": [
+            "swift_acc_container",
+            "swift_obj_container",
+            "swift_cont_container"
+        ],
+        "hosts": []
+    },
+    "swift_hosts": {
+        "children": [],
+        "hosts": []
+    },
+    "swift_obj": {
+        "children": [],
+        "hosts": []
+    },
+    "swift_obj_container": {
+        "hosts": []
+    },
     "swift_proxy": {
         "children": [],
         "hosts": [
