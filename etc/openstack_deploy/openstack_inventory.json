@@ -754,27 +754,6 @@
                 "physical_host_group": "repo-infra_hosts",
                 "properties": {}
             },
-            "inst-6c3be511f46b_swift_proxy_container-30006f0f": {
-                "ansible_host": "172.29.237.102",
-                "cinder_default_availability_zone": "cinderAZ_1",
-                "cinder_storage_availability_zone": "cinderAZ_1",
-                "component": "swift_proxy",
-                "container_name": "inst-6c3be511f46b_swift_proxy_container-30006f0f",
-                "container_networks": {
-                    "management_address": {
-                        "address": "172.29.237.102",
-                        "bridge": "br-mgmt",
-                        "interface": "eth1",
-                        "netmask": "255.255.252.0",
-                        "type": "veth"
-                    }
-                },
-                "container_tech": "lxc",
-                "management_address": "172.29.237.102",
-                "physical_host": "inst-6c3be511f46b",
-                "physical_host_group": "swift-proxy_hosts",
-                "properties": {}
-            },
             "inst-6c3be511f46b_utility_container-9d8afbf2": {
                 "ansible_host": "172.29.238.54",
                 "cinder_default_availability_zone": "cinderAZ_1",
@@ -1382,27 +1361,6 @@
                 "management_address": "172.29.238.252",
                 "physical_host": "inst-6c3be511f4b0",
                 "physical_host_group": "repo-infra_hosts",
-                "properties": {}
-            },
-            "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4": {
-                "ansible_host": "172.29.238.19",
-                "cinder_default_availability_zone": "cinderAZ_1",
-                "cinder_storage_availability_zone": "cinderAZ_1",
-                "component": "swift_proxy",
-                "container_name": "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4",
-                "container_networks": {
-                    "management_address": {
-                        "address": "172.29.238.19",
-                        "bridge": "br-mgmt",
-                        "interface": "eth1",
-                        "netmask": "255.255.252.0",
-                        "type": "veth"
-                    }
-                },
-                "container_tech": "lxc",
-                "management_address": "172.29.238.19",
-                "physical_host": "inst-6c3be511f4b0",
-                "physical_host_group": "swift-proxy_hosts",
                 "properties": {}
             },
             "inst-6c3be511f4b0_utility_container-32c528d7": {
@@ -2481,27 +2439,6 @@
                 "management_address": "172.29.237.50",
                 "physical_host": "inst-6c3be5190a72",
                 "physical_host_group": "repo-infra_hosts",
-                "properties": {}
-            },
-            "inst-6c3be5190a72_swift_proxy_container-d1e3ef50": {
-                "ansible_host": "172.29.238.217",
-                "cinder_default_availability_zone": "cinderAZ_1",
-                "cinder_storage_availability_zone": "cinderAZ_1",
-                "component": "swift_proxy",
-                "container_name": "inst-6c3be5190a72_swift_proxy_container-d1e3ef50",
-                "container_networks": {
-                    "management_address": {
-                        "address": "172.29.238.217",
-                        "bridge": "br-mgmt",
-                        "interface": "eth1",
-                        "netmask": "255.255.252.0",
-                        "type": "veth"
-                    }
-                },
-                "container_tech": "lxc",
-                "management_address": "172.29.238.217",
-                "physical_host": "inst-6c3be5190a72",
-                "physical_host_group": "swift-proxy_hosts",
                 "properties": {}
             },
             "inst-6c3be5190a72_utility_container-0c94e124": {
@@ -3777,7 +3714,6 @@
             "inst-6c3be511f46b_glance_container-177994bf",
             "inst-6c3be511f46b_zookeeper_container-d6fd7160",
             "inst-6c3be511f46b_neutron_ovn_northd_container-a25b885f",
-            "inst-6c3be511f46b_swift_proxy_container-30006f0f",
             "inst-6c3be511f46b_designate_container-9d7d351e",
             "inst-6c3be511f46b_apm-server_container-1c9fa397",
             "inst-6c3be511f46b_elastic-logstash_container-b70fc558",
@@ -3806,7 +3742,6 @@
             "inst-6c3be511f4b0_glance_container-7a4dce4b",
             "inst-6c3be511f4b0_zookeeper_container-10502657",
             "inst-6c3be511f4b0_neutron_ovn_northd_container-c088ef10",
-            "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4",
             "inst-6c3be511f4b0_designate_container-d7435e1b",
             "inst-6c3be511f4b0_apm-server_container-f2b3d34b",
             "inst-6c3be511f4b0_elastic-logstash_container-7ad4d627",
@@ -3843,7 +3778,6 @@
             "inst-6c3be5190a72_glance_container-ab0086af",
             "inst-6c3be5190a72_zookeeper_container-ffe36b2b",
             "inst-6c3be5190a72_neutron_ovn_northd_container-b16fda87",
-            "inst-6c3be5190a72_swift_proxy_container-d1e3ef50",
             "inst-6c3be5190a72_designate_container-c5595c60",
             "inst-6c3be5190a72_apm-server_container-10f29779",
             "inst-6c3be5190a72_elastic-logstash_container-8681d13d",
@@ -5257,22 +5191,6 @@
             "inst-6c3be51909f3"
         ]
     },
-    "swift-proxy_all": {
-        "hosts": [
-            "inst-6c3be5190a72",
-            "inst-6c3be5190a72_swift_proxy_container-d1e3ef50",
-            "inst-6c3be511f4b0",
-            "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4",
-            "inst-6c3be511f46b",
-            "inst-6c3be511f46b_swift_proxy_container-30006f0f"
-        ]
-    },
-    "swift-proxy_containers": {
-        "children": [
-            "swift_proxy_container"
-        ],
-        "hosts": []
-    },
     "swift-proxy_hosts": {
         "children": [],
         "hosts": []
@@ -5328,21 +5246,6 @@
     },
     "swift_obj_container": {
         "hosts": []
-    },
-    "swift_proxy": {
-        "children": [],
-        "hosts": [
-            "inst-6c3be5190a72_swift_proxy_container-d1e3ef50",
-            "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4",
-            "inst-6c3be511f46b_swift_proxy_container-30006f0f"
-        ]
-    },
-    "swift_proxy_container": {
-        "hosts": [
-            "inst-6c3be5190a72_swift_proxy_container-d1e3ef50",
-            "inst-6c3be511f4b0_swift_proxy_container-3f9d9ee4",
-            "inst-6c3be511f46b_swift_proxy_container-30006f0f"
-        ]
     },
     "swift_remote": {
         "children": [],
