@@ -5191,6 +5191,12 @@
             "inst-6c3be51909f3"
         ]
     },
+    "swift-proxy_containers": {
+        "children": [
+            "swift_proxy_container"
+        ],
+        "hosts": []
+    },
     "swift-proxy_hosts": {
         "children": [],
         "hosts": []
@@ -5245,6 +5251,13 @@
         "hosts": []
     },
     "swift_obj_container": {
+        "hosts": []
+    },
+    "swift_proxy": {
+        "children": [],
+        "hosts": []
+    },
+    "swift_proxy_container": {
         "hosts": []
     },
     "swift_remote": {
