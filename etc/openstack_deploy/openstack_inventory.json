@@ -2993,7 +2993,6 @@
     "ceph-osd": {
         "children": [],
         "hosts": [
-            "inst-6c3be5190a66",
             "inst-10604b858bb0",
             "inst-6c3be511f4ba",
             "inst-6c3be5190a14",
@@ -3007,7 +3006,6 @@
     },
     "ceph-osd_all": {
         "hosts": [
-            "inst-6c3be5190a66",
             "inst-10604b858bb0",
             "inst-6c3be511f4ba",
             "inst-6c3be5190a14",
@@ -3031,7 +3029,6 @@
     "ceph-osd_hosts": {
         "children": [],
         "hosts": [
-            "inst-6c3be5190a66",
             "inst-10604b858bb0",
             "inst-6c3be511f4ba",
             "inst-6c3be5190a14",
@@ -5269,142 +5266,6 @@
             "inst-6c3be511f46b",
             "inst-6c3be511f46b_swift_proxy_container-30006f0f"
         ]
-    },
-    "swift-proxy_containers": {
-        "children": [
-            "swift_proxy_container"
-        ],
-        "hosts": []
-    },
-    "swift-proxy_hosts": {
-        "children": [],
-        "hosts": [
-            "inst-6c3be5190a72",
-            "inst-6c3be511f4b0",
-            "inst-6c3be511f46b"
-        ]
-    },
-    "swift-remote_containers": {
-        "children": [
-            "swift_remote_container"
-        ],
-        "hosts": []
-    },
-    "swift-remote_hosts": {
-        "children": [],
-        "hosts": []
-    },
-    "swift_acc": {
-        "children": [],
-        "hosts": [
-            "inst-6c3be5190a66",
-            "inst-10604b858bb0",
-            "inst-6c3be511f46b",
-            "inst-6c3be511f4b0",
-            "inst-6c3be511f4ba",
-            "inst-6c3be5190a14",
-            "inst-6c3be5190a72",
-            "inst-2c44fd1862cd",
-            "inst-6c3be5190a16",
-            "inst-6c3be5165177",
-            "inst-6c3be5165172",
-            "inst-6c3be51909f3",
-            "inst-6c3b35190a1f"
-        ]
-    },
-    "swift_acc_container": {
-        "hosts": []
-    },
-    "swift_all": {
-        "children": [
-            "swift_proxy",
-            "swift_acc",
-            "swift_obj",
-            "swift_cont"
-        ],
-        "hosts": [
-            "inst-6c3be5190a66",
-            "inst-10604b858bb0",
-            "inst-6c3be511f46b",
-            "inst-6c3be511f4b0",
-            "inst-6c3be511f4ba",
-            "inst-6c3be5190a14",
-            "inst-6c3be5190a72",
-            "inst-2c44fd1862cd",
-            "inst-6c3be5190a16",
-            "inst-6c3be5165177",
-            "inst-6c3be5165172",
-            "inst-6c3be51909f3",
-            "inst-6c3b35190a1f"
-        ]
-    },
-    "swift_cont": {
-        "children": [],
-        "hosts": [
-            "inst-6c3be5190a66",
-            "inst-10604b858bb0",
-            "inst-6c3be511f46b",
-            "inst-6c3be511f4b0",
-            "inst-6c3be511f4ba",
-            "inst-6c3be5190a14",
-            "inst-6c3be5190a72",
-            "inst-2c44fd1862cd",
-            "inst-6c3be5190a16",
-            "inst-6c3be5165177",
-            "inst-6c3be5165172",
-            "inst-6c3be51909f3",
-            "inst-6c3b35190a1f"
-        ]
-    },
-    "swift_cont_container": {
-        "hosts": []
-    },
-    "swift_containers": {
-        "children": [
-            "swift_acc_container",
-            "swift_obj_container",
-            "swift_cont_container"
-        ],
-        "hosts": []
-    },
-    "swift_hosts": {
-        "children": [],
-        "hosts": [
-            "inst-6c3be5190a66",
-            "inst-10604b858bb0",
-            "inst-6c3be511f46b",
-            "inst-6c3be511f4b0",
-            "inst-6c3be511f4ba",
-            "inst-6c3be5190a14",
-            "inst-6c3be5190a72",
-            "inst-2c44fd1862cd",
-            "inst-6c3be5190a16",
-            "inst-6c3be5165177",
-            "inst-6c3be5165172",
-            "inst-6c3be51909f3",
-            "inst-6c3b35190a1f"
-        ]
-    },
-    "swift_obj": {
-        "children": [],
-        "hosts": [
-            "inst-6c3be5190a66",
-            "inst-10604b858bb0",
-            "inst-6c3be511f46b",
-            "inst-6c3be511f4b0",
-            "inst-6c3be511f4ba",
-            "inst-6c3be5190a14",
-            "inst-6c3be5190a72",
-            "inst-2c44fd1862cd",
-            "inst-6c3be5190a16",
-            "inst-6c3be5165177",
-            "inst-6c3be5165172",
-            "inst-6c3be51909f3",
-            "inst-6c3b35190a1f"
-        ]
-    },
-    "swift_obj_container": {
-        "hosts": []
     },
     "swift_proxy": {
         "children": [],
