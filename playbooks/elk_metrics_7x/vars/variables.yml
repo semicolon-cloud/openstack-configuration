@@ -286,21 +286,21 @@ grafana_datasources:
       maxConcurrentShardRequests: 256
       timeField: "@timestamp"
       timeInterval: ">10s"
-  - name: "auditbeat-Elasticsearch"
-    type: "elasticsearch"
-    access: "proxy"
-    url: "{{ elastic_vip_url }}"
-    basicAuth: false
-    basicAuthUser: ""
-    basicAuthPassword: ""
-    isDefault: false
-    database: "auditbeat-*"
-    jsonData:
-      esVersion: 56
-      keepCookies: []
-      maxConcurrentShardRequests: 256
-      timeField: "@timestamp"
-      timeInterval: ">10s"
+  # - name: "auditbeat-Elasticsearch"
+  #   type: "elasticsearch"
+  #   access: "proxy"
+  #   url: "{{ elastic_vip_url }}"
+  #   basicAuth: false
+  #   basicAuthUser: ""
+  #   basicAuthPassword: ""
+  #   isDefault: false
+  #   database: "auditbeat-*"
+  #   jsonData:
+  #     esVersion: 56
+  #     keepCookies: []
+  #     maxConcurrentShardRequests: 256
+  #     timeField: "@timestamp"
+  #     timeInterval: ">10s"
   - name: "filebeat-Elasticsearch"
     type: "elasticsearch"
     access: "proxy"
@@ -331,36 +331,36 @@ grafana_datasources:
       maxConcurrentShardRequests: 256
       timeField: "@timestamp"
       timeInterval: ">10s"
-  - name: "metricbeat-Elasticsearch"
-    type: "elasticsearch"
-    access: "proxy"
-    url: "{{ elastic_vip_url }}"
-    basicAuth: false
-    basicAuthUser: ""
-    basicAuthPassword: ""
-    isDefault: false
-    database: "metricbeat-*"
-    jsonData:
-      esVersion: 56
-      keepCookies: []
-      maxConcurrentShardRequests: 256
-      timeField: "@timestamp"
-      timeInterval: ">10s"
-  - name: "packetbeat-Elasticsearch"
-    type: "elasticsearch"
-    access: "proxy"
-    url: "{{ elastic_vip_url }}"
-    basicAuth: false
-    basicAuthUser: ""
-    basicAuthPassword: ""
-    isDefault: false
-    database: "packetbeat-*"
-    jsonData:
-      esVersion: 56
-      keepCookies: []
-      maxConcurrentShardRequests: 256
-      timeField: "@timestamp"
-      timeInterval: ">10s"
+  # - name: "metricbeat-Elasticsearch"
+  #   type: "elasticsearch"
+  #   access: "proxy"
+  #   url: "{{ elastic_vip_url }}"
+  #   basicAuth: false
+  #   basicAuthUser: ""
+  #   basicAuthPassword: ""
+  #   isDefault: false
+  #   database: "metricbeat-*"
+  #   jsonData:
+  #     esVersion: 56
+  #     keepCookies: []
+  #     maxConcurrentShardRequests: 256
+  #     timeField: "@timestamp"
+  #     timeInterval: ">10s"
+  # - name: "packetbeat-Elasticsearch"
+  #   type: "elasticsearch"
+  #   access: "proxy"
+  #   url: "{{ elastic_vip_url }}"
+  #   basicAuth: false
+  #   basicAuthUser: ""
+  #   basicAuthPassword: ""
+  #   isDefault: false
+  #   database: "packetbeat-*"
+  #   jsonData:
+  #     esVersion: 56
+  #     keepCookies: []
+  #     maxConcurrentShardRequests: 256
+  #     timeField: "@timestamp"
+  #     timeInterval: ">10s"
   - name: "monitorstack-Elasticsearch"
     type: "elasticsearch"
     access: "proxy"
