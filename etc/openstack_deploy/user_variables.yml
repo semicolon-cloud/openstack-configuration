@@ -469,6 +469,7 @@ neutron_wsgi_processes_max: 1
 
 keystone_wsgi_processes_max: 1
 
+heat_wsgi_processes_max: 1
 heat_engine_workers: 1
 heat_api_workers: 1 # heat is reasonable
 
