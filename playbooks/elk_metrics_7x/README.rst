@@ -641,7 +641,7 @@ Enabling ELK security
 ---------------------
 
 By default, ELK 7 is deployed without security enabled. This means that all
-service and user interactions are unauthenticated, and communication is
+service and user interacxtions are unauthenticated, and communication is
 unencrypted.
 
 If you wish to enable security features, it is recommended to start with a

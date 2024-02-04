@@ -385,9 +385,9 @@ elastic_beats:
     make_index: true
     timeFieldName: '@timestamp'
     hosts: "{{ groups['apm-server'] | default([]) }}"
-  auditbeat:
-    timeFieldName: '@timestamp'
-    hosts: "{{ groups['hosts'] | default([]) }}"
+  # auditbeat:
+  #   timeFieldName: '@timestamp'
+  #   hosts: "{{ groups['hosts'] | default([]) }}"
   filebeat:
     timeFieldName: '@timestamp'
     hosts: "{{ groups['hosts'] | default([]) }}"
@@ -400,15 +400,15 @@ elastic_beats:
   journalbeat:
     timeFieldName: '@timestamp'
     hosts: "{{ groups['hosts'] | default([]) }}"
-  metricbeat:
-    timeFieldName: '@timestamp'
-    hosts: "{{ groups['all'] | default([]) }}"
-  packetbeat:
-    timeFieldName: '@timestamp'
-    hosts: "{{ groups['hosts'] | default([]) }}"
-  monitorstack:
-    timeFieldName: '@timestamp'
-    hosts: "{{ (groups['nova_compute'] | default([])) | union((groups['utility_all'] | default([]))) | union((groups['memcached_all'] | default([]))) }}"
+  # metricbeat:
+  #   timeFieldName: '@timestamp'
+  #   hosts: "{{ groups['all'] | default([]) }}"
+  # packetbeat:
+  #   timeFieldName: '@timestamp'
+  #   hosts: "{{ groups['hosts'] | default([]) }}"
+  # monitorstack:
+  #   timeFieldName: '@timestamp'
+  #   hosts: "{{ (groups['nova_compute'] | default([])) | union((groups['utility_all'] | default([]))) | union((groups['memcached_all'] | default([]))) }}"
   skydive:
     hosts: "{{ (((groups['skydive_analyzers'] | default([])) | length) > 0) | ternary((groups['hosts'] | default([])), []) }}"
 
