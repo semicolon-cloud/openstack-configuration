@@ -6,7 +6,8 @@ keycloak_admin_user: admin
 
 keycloak_bind_address: "{{ ansible_host }}"
 keycloak_host: "accounts.seda.club"
-keycloak_management_url: "http://localhost:{{ keycloak_management_http_port + keycloak_jboss_port_offset }}"
+keycloak_management_url: "http://{{ansible_host}}:{{ keycloak_management_http_port + keycloak_jboss_port_offset }}"
+keycloak_management_port_bind_address: "{{ansible_host}}"
 keycloak_url: "http://accounts.seda.club"
 keycloak_java_home: "/usr/lib/jvm/java-8-openjdk-amd64/jre" # MAKE SURE TO INSTALL JAV YOURSELF.
 keycloak_jdbc_engine: mariadb
