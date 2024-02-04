@@ -5,7 +5,8 @@ keycloak_db_user: keycloak
 keycloak_admin_user: admin
 
 keycloak_bind_address: "{{ ansible_host }}"
-keycloak_host: "http://accounts.seda.club/"
+keycloak_host: "accounts.seda.club"
+keycloak_management_url: "http://{{ ansible_host }}:{{ keycloak_management_http_port + keycloak_jboss_port_offset }}"
 keycloak_db_enabled: true
 
 haproxy_keycloak_service:
