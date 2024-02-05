@@ -23,7 +23,7 @@ haproxy_keycloak_service:
   haproxy_balance_type: http
   haproxy_balance_alg: source
   haproxy_backend_options:
-    - "httpchk HEAD /auth/login/ HTTP/1.0\\r\\nUser-agent:\\ osa-haproxy-healthcheck"
+    - "httpchk GET / HTTP/1.0\\r\\nUser-agent:\\ osa-haproxy-healthcheck"
   haproxy_service_enabled: "{{ groups['keycloak_containers'] is defined and groups['keycloak_containers'] | length > 0 }}"
   haproxy_backend_ssl: false
   haproxy_backend_ca: "{{ keycloak_haproxy_backend_ca | default(openstack_haproxy_backend_ca) }}"
