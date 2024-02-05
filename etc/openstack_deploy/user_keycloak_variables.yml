@@ -1,18 +1,15 @@
 # Keycloak vars
-keycloak_db_name: keycloak
-keycloak_db_user: keycloak
+keycloak_quarkus_db_name: keycloak
+keycloak_quarkus_db_user: keycloak
 
-keycloak_admin_user: admin
+keycloak_quarkus_admin_user: admin
 
-keycloak_bind_address: "{{ ansible_host }}"
-keycloak_host: "accounts.seda.club"
-keycloak_management_url: "http://{{ansible_host}}:{{ keycloak_management_http_port + keycloak_jboss_port_offset }}"
-keycloak_management_port_bind_address: "{{ansible_host}}"
-keycloak_url: "http://accounts.seda.club"
-keycloak_java_home: "/usr/lib/jvm/java-8-openjdk-amd64/jre" # MAKE SURE TO INSTALL JAV YOURSELF.
-keycloak_jdbc_engine: mariadb
-keycloak_java_opts: "-Xms1024m -Xmx2048m -Djboss.as.management.blocking.timeout=3600"
-keycloak_db_enabled: true
+keycloak_quarkus_bind_address: "{{ ansible_host }}"
+keycloak_quarkus_host: "accounts.seda.club"
+keycloak_quarkus_java_home: "/usr/lib/jvm/java-8-openjdk-amd64/jre" # MAKE SURE TO INSTALL JAV YOURSELF.
+keycloak_quarkus_jdbc_engine: mariadb
+keycloak_quarkus_java_opts: "-Xms1024m -Xmx2048m -Djboss.as.management.blocking.timeout=3600"
+keycloak_quarkus_db_enabled: true
 
 haproxy_keycloak_service:
   haproxy_backend_only: true    #only describe the backends, frontend is in `base` via haproxy_all group vars
