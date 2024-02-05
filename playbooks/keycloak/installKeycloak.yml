@@ -52,7 +52,7 @@
             login_password: "{{ galera_root_password }}"
             login_host: "{{ galera_address | default('127.0.0.1') }}"
             name: "{{ keycloak_quarkus_db_user }}"
-            password: "{{ keycloak_quarkus_db_password }}"
+            password: "{{ keycloak_db_password }}"
             host: "{{ item }}"
             state: "present"
             priv: "{{ keycloak_quarkus_db_name }}.*:ALL"
@@ -68,7 +68,7 @@
               host: "{{ galera_address }}:3306"
               name: "{{ keycloak_quarkus_db_name }}"
               user: "{{ keycloak_quarkus_db_user }}"
-              password: "{{ keycloak_quarkus_db_password }}"
+              password: "{{ keycloak_db_password }}"
       when:
         - (groups['galera_all'] | default([])) | length > 0
 
@@ -80,7 +80,7 @@
     keycloak_quarkus_jdbc_url: "jdbc:mariadb://{{galera_address}}:3306/keycloak"
     # keycloak_jdbc_driver_version: ""
     keycloak_quarkus_db_user: "{{keycloak_quarkus_db_user}}"
-    keycloak_quarkus_db_pass: "{{keycloak_quarkus_db_password}}"
+    keycloak_quarkus_db_pass: "{{keycloak_db_password}}"
   roles:
     - role: middleware_automation.keycloak.keycloak_quarkus
 
