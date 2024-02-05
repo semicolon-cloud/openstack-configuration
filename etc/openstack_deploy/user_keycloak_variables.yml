@@ -5,15 +5,14 @@ keycloak_quarkus_db_user: keycloak
 keycloak_quarkus_admin_user: admin
 
 keycloak_quarkus_bind_address: "{{ ansible_host }}"
-keycloak_quarkus_host: "accounts.seda.club"
+keycloak_quarkus_host: "{{ansible_host}}"
+keycloak_quarkus_frontend_url: "https://accounts.seda.club"
 keycloak_java_home: "/usr/lib/jvm/java-17-openjdk-amd64" # MAKE SURE TO INSTALL JAV YOURSELF. ALSO for some reason current version of keycloak_quarkus uses one without _quarkus thing for java home idk why
 keycloak_quarkus_java_home: "/usr/lib/jvm/java-17-openjdk-amd64" # MAKE SURE TO INSTALL JAV YOURSELF.
 keycloak_quarkus_jdbc_engine: mariadb
 # keycloak_quarkus_java_opts: "-Xms1024m -Xmx2048m -Djboss.as.management.blocking.timeout=3600"
 
 keycloak_quarkus_db_enabled: true
-keycloak.health_url: "https://{{ keycloak_quarkus_host }}{{ keycloak_quarkus_http_relative_path }}{{ '/' if keycloak_quarkus_http_relative_path | length > 1 else '' }}realms/master/.well-known/openid-configuration"
-  
 
 haproxy_keycloak_service:
   haproxy_backend_only: true    #only describe the backends, frontend is in `base` via haproxy_all group vars
