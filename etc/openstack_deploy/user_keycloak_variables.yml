@@ -13,6 +13,7 @@ keycloak_quarkus_jdbc_engine: mariadb
 # keycloak_quarkus_java_opts: "-Xms1024m -Xmx2048m -Djboss.as.management.blocking.timeout=3600"
 
 keycloak_quarkus_db_enabled: true
+keycloak_quarkus_transaction_xa_enabled: false
 
 haproxy_keycloak_service:
   haproxy_backend_only: true    #only describe the backends, frontend is in `base` via haproxy_all group vars
