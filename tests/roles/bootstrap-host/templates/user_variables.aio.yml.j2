@@ -153,7 +153,7 @@ tempest_test_includelist:
   - "neutron_tempest_plugin.api.test_networks*"
   - "tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops"
 
-tempest_tempest_conf_overrides:
+tempest_tempest_conf_overrides_neutron:
   network-feature-enabled:
     api_extensions: agent,allowed-address-pairs,binding,dhcp_agent_scheduler,ext-gw-mode,external-net,extra_dhcp_opt,extra_dhcp_optagent,extraroute,l3_agent_scheduler,metering,provider,quotas,router,security-group,service-type,subnet_allocation
 {% endif %}
@@ -218,14 +218,8 @@ trove_wsgi_processes: 1
 magnum_wsgi_processes: 1
 magnum_conductor_workers: 1
 
-## Octavia
 {% if 'metal' in bootstrap_host_scenarios %}
-# TODO(mnaser): The Octavia role relies on gathering IPs of hosts in the
-#               LBaaS network and using those in the health manager pool
-#               IPs.  We don't store those IPs when running metal so we
-#               have to override it manually.  We should remove this and
-#               fix the role (or the inventory tool) eventually.
-octavia_hm_hosts: 172.29.232.100 # br-lbaas IP
+venv_wheel_build_enable: false
 {% endif %}
 
 ## Sahara
@@ -305,6 +299,7 @@ openstack_user_kernel_options:
 
 openstack_hosts_package_state: latest
 
+## Octavia
 {% if 'octavia' in bootstrap_host_scenarios_expanded %}
 # Enable Octavia V2 API/standalone
 octavia_v2: True
@@ -312,6 +307,14 @@ octavia_v2: True
 octavia_v1: False
 octavia_management_net_subnet_cidr: '172.29.232.0/22'
 tempest_run_concurrency: 0
+{%   if 'metal' in bootstrap_host_scenarios %}
+# TODO(mnaser): The Octavia role relies on gathering IPs of hosts in the
+#               LBaaS network and using those in the health manager pool
+#               IPs.  We don't store those IPs when running metal so we
+#               have to override it manually.  We should remove this and
+#               fix the role (or the inventory tool) eventually.
+octavia_hm_hosts: 172.29.232.100 # br-lbaas IP
+{%   endif %}
 {% endif %}
 
 {% if 'proxy' in bootstrap_host_scenarios_expanded %}
@@ -345,4 +348,8 @@ cinder_backends:
 tempest_test_includelist:
   - tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario
 {%   endif %}
+{% endif %}
+
+{% if 'quorum' in bootstrap_host_scenarios_expanded %}
+oslomsg_rabbit_quorum_queues: True
 {% endif %}

@@ -1,0 +1,29 @@
+---
+features:
+  - |
+    Added support for RabbitMQ quorum queues. Quorum queues are disabled
+    by default. Followingvariables were implemented to control the behaviour:
+
+      * oslomsg_rabbit_quorum_queues (default: false)
+      * oslomsg_rabbit_quorum_delivery_limit (default: 0)
+      * oslomsg_rabbit_quorum_max_memory_bytes (default: 0)
+
+    Simmilar variables were also implemented for each service, while variables
+    above aim to change behaviour globally.
+upgrade:
+  - |
+    In case deployer wants to switch into using RabbitMQ quorum queues instead
+    of traditional HA policies during OpenStack upgrade, they need to define
+    variable ``oslomsg_rabbit_quorum_queues: True`` in user_variables.yml.
+
+    If ``oslomsg_rabbit_quorum_queues`` is enabled,
+    RabbitMQ vhosts will be re-created without leading ``/``. Ensure to
+    reflect these changes in your monitoring software if vhosts are not
+    auto-discovered.
+    Also changing vhost name will result in prolonged downtime for services,
+    as not re-configured yet backends will fail to connect to RabbitMQ until
+    restart.
+    It also might be worth to process upgrade with extra caution for some
+    serivices that are sensetive to RabbitMQ downtime or even disabling usage
+    of quorum queues for these services. Good examples of such services
+    are Trove or Neutron with ML2 LXB or ML2 OVS drivers.

@@ -43,6 +43,7 @@
 - name: Pre-service deployment
   hosts: keystone_all
   gather_facts: false
+  environment: "{{ deployment_environment_variables | default({}) }}"
   tasks:
     - name: "Pre-service deployment tasks from os_keystone role"
       include_role:
@@ -52,7 +53,7 @@
     - keystone
 
 - name: Configure haproxy services
-  import_playbook: common-playbooks/haproxy-service-config.yml
+  import_playbook: openstack.osa.haproxy_service_config
   vars:
     service_group: keystone_all
     service_variable: "keystone_haproxy_services"
@@ -75,7 +76,8 @@
     # config file changes which causes a container/service
     # restart do not cause an unexpected outage, we drain
     # the load balancer back end for this container.
-    - include_tasks: common-tasks/haproxy-endpoint-manage.yml
+    - name: Disabling haproxy backends
+      include_tasks: common-tasks/haproxy-endpoint-manage.yml
       vars:
         haproxy_backend: "keystone_service-back"
         haproxy_state: disabled
@@ -88,7 +90,8 @@
           - "lxc.start.order=19"
       when: not is_metal
 
-    - include_tasks: common-tasks/unbound-clients.yml
+    - name: Including unbound-clients tasks
+      include_tasks: common-tasks/unbound-clients.yml
       when:
         - hostvars['localhost']['resolvconf_enabled'] | bool
 
@@ -102,7 +105,8 @@
     # Now that container changes are done, we can set
     # the load balancer back end for this container
     # to available again.
-    - include_tasks: common-tasks/haproxy-endpoint-manage.yml
+    - name: Enabling haproxy backends
+      include_tasks: common-tasks/haproxy-endpoint-manage.yml
       vars:
         haproxy_backend: "keystone_service-back"
         haproxy_state: enabled
@@ -122,7 +126,7 @@
   tags:
     - keystone
   tasks:
-    - name: refresh local facts
+    - name: Refresh local facts
       setup:
         filter: ansible_local
         gather_subset: "!all"
@@ -157,7 +161,7 @@
       run_once: yes
 
     - name: Perform a Keystone DB sync contract
-      command: "{{ keystone_bin }}/keystone-manage db_sync --contract"
+      command: "{{ keystone_bin }}/keystone-manage db_sync --contract" # noqa: no-changed-when
       become: yes
       become_user: "{{ keystone_system_user_name | default('keystone') }}"
       when:
@@ -172,6 +176,7 @@
         section: keystone
         option: "need_db_contract"
         value: "False"
+        mode: "0644"
       when:
         - "dbsync_contract is succeeded"
 
@@ -191,4 +196,3 @@
       include_role:
         name: os_keystone
         tasks_from: main_keystone_federation_sp_idp_setup.yml
-

@@ -15,7 +15,6 @@ target host:
   *Note*: Due to the absence of community repos, Ceph packages will be
   installed from the default repository which contains *only* Quincy
   release.
-* Ubuntu server 20.04 (Focal Fossa) LTS 64-bit
 * Debian 11 64-bit
 * Centos 9 Stream 64-bit
 * Rocky Linux 9 64-bit
@@ -134,10 +133,13 @@ Configure CentOS / Rocky
 Configure SSH keys
 ==================
 
-Ansible uses SSH to connect the deployment host and target hosts.
+Ansible uses SSH to connect the deployment host and target hosts. You can
+either use ``root`` user or any other user that is allowed to escalate
+privileges through `Ansible become`_ (like adding user to sudoers).
+For more details, please reffer to the `Running as non-root`_.
 
 #. Copy the contents of the public key file on the deployment host to
-   the ``/root/.ssh/authorized_keys`` file on each target host.
+   the ``~/.ssh/authorized_keys`` file on each target host.
 
 #. Test public key authentication from the deployment host to each target
    host by using SSH to connect to the target host from the deployment host.
@@ -149,17 +151,8 @@ For more information about how to generate an SSH key pair, as well as best
 practices, see `GitHub's documentation about generating SSH keys`_.
 
 .. _GitHub's documentation about generating SSH keys: https://help.github.com/articles/generating-ssh-keys/
-
-.. important::
-
-   OpenStack-Ansible deployments require the presence of a
-   ``/root/.ssh/id_rsa.pub`` file on the deployment host.
-   The contents of this file is inserted into an
-   ``authorized_keys`` file for the containers, which is a
-   necessary step for the Ansible playbooks. You can
-   override this behavior by setting the
-   ``lxc_container_ssh_key`` variable to the public key for
-   the container.
+.. _Ansible become: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html
+.. _Running as non-root: https://docs.openstack.org/openstack-ansible/latest/user/security/non-root.rst
 
 Configuring the storage
 =======================

@@ -49,6 +49,9 @@ export INSTALL_METHOD=${3:-"source"}
 # enable the ARA callback plugin
 export SETUP_ARA=${SETUP_ARA:-true}
 
+# List of scenarios that update configuration files prior to the upgrade
+export SCENARIOS_WITH_CONFIG_UPDATE=("tls")
+
 ## Change branch for Upgrades ------------------------------------------------
 # If the action is to upgrade, then store the current SHA,
 # checkout the source SHA before executing the greenfield
@@ -60,7 +63,7 @@ if [[ "${ACTION}" =~ "upgrade" ]]; then
     # Be sure to change this whenever a new stable branch
     # is created.
     UPGRADE_ACTION_ARRAY=(${ACTION//_/ })
-    export UPGRADE_SOURCE_RELEASE=${UPGRADE_ACTION_ARRAY[1]:-'zed'}
+    export UPGRADE_SOURCE_RELEASE=${UPGRADE_ACTION_ARRAY[1]:-'2023.1'}
     export UPGRADE_SOURCE_BRANCH=${UPGRADE_SOURCE_BRANCH:-stable/$UPGRADE_SOURCE_RELEASE}
 
     # Store the target SHA/branch
@@ -80,8 +83,9 @@ fi
 info_block "Checking for required libraries." 2> /dev/null || source "${OSA_CLONE_DIR}/scripts/scripts-library.sh"
 
 ## Main ----------------------------------------------------------------------
-
 # Log some data about the instance and the rest of the system
+gate_log_requirements
+
 log_instance_info
 
 run_dstat || true
@@ -134,9 +138,6 @@ elif [[ "${ACTION}" == "linters" ]]; then
     # defining working directories
     VENV_BIN_DIR=$(dirname ${PIP_COMMAND})
 
-    # Due to ansible-lint bug, it can't run from venv without sourcing it
-    # https://github.com/ansible-community/ansible-lint/issues/1507
-    source ${VENV_BIN_DIR}/activate
     source /usr/local/bin/openstack-ansible.rc
     # Check if we have test playbook and running checks
     if [[ -f "/etc/ansible/roles/${SCENARIO}/examples/playbook.yml" ]]; then
@@ -147,7 +148,7 @@ elif [[ "${ACTION}" == "linters" ]]; then
     else
       ROLE_DIR="${OSA_CLONE_DIR}"
       ${VENV_BIN_DIR}/ansible-lint playbooks/ --exclude /etc/ansible/roles
-      ansible-playbook --syntax-check --list-tasks playbooks/setup-everything.yml -e openstack_service_setup_host=utility_all
+      ansible-playbook --syntax-check --list-tasks playbooks/setup-everything.yml
     fi
 
     # Run bashate
@@ -167,7 +168,6 @@ elif [[ "${ACTION}" == "linters" ]]; then
       --exclude-dir doc \
       "${ROLE_DIR}" | xargs -r ${VENV_BIN_DIR}/flake8 --verbose
 
-    deactivate
   popd
 else
   pushd "${OSA_CLONE_DIR}/playbooks"
@@ -262,6 +262,14 @@ if [[ "${ACTION}" =~ "upgrade" ]]; then
       # Doing symlinking here, as bootstrap role won't be called
       ln -s $ZUUL_SRC_PATH /openstack/src
     fi
+    # Update AIO config files for certain scenarios
+    for item in "${SCENARIOS_WITH_CONFIG_UPDATE[@]}"; do
+      if [[ "${SCENARIO}" =~ "${item}" ]]; then
+        export BOOTSTRAP_EXTRA_PARAMS="${BOOTSTRAP_EXTRA_PARAMS:-} -t prepare-aio-config"
+        "${OSA_CLONE_DIR}/scripts/bootstrap-aio.sh"
+        break
+      fi
+    done
     # To execute the upgrade script we need to provide
     # an affirmative response to the warning that the
     # upgrade is irreversable.

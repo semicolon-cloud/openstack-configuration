@@ -49,7 +49,7 @@
 
     - name: Check the Zuul src dir for cloned collections
       stat:
-        path: "{{ zuul_src_path }}/{{ item.source.split('/')[-3:] | join('/') }}"
+        path: "{{ zuul_src_path }}/{{ item.source.split('/')[2:] | join('/') | split('#') | first }}"
         get_attributes: no
         get_checksum: no
         get_mime: no
@@ -60,7 +60,7 @@
       vars:
         zuul_item:
           name: "{{ item.item.name }}"
-          source: "{{ zuul_src_path }}/{{ item.item.source.split('/')[-3:] | join('/') }}"
+          source: "{{ zuul_src_path }}/{{ item.item.source.split('/')[2:] | join('/') | replace('#', '') }}"
           type: "dir"
       set_fact:
         galaxy_collections_list_ci: "{{ galaxy_collections_list_ci | default([]) + [ (item.stat.exists | ternary(zuul_item, item.item)) ] }}"
@@ -100,5 +100,6 @@
     collection_file: "{{ playbook_dir }}/../ansible-collection-requirements.yml"
     required_collections: "{{ lookup('file', collection_file) | from_yaml }}"
     collection_path_default: '/etc/ansible/'
+    user_collection_file: 'user-collection-requirements.yml'
     user_collections: "{{ lookup('file', user_collections_path, errors='ignore')|default([], true) | from_yaml }}"
-    user_collections_path: "{{ lookup('env', 'OSA_CONFIG_DIR') | default('/etc/openstack_deploy', true) ~ '/' ~ (user_collection_file|default('')) }}"
+    user_collections_path: "{{ lookup('env', 'OSA_CONFIG_DIR') | default('/etc/openstack_deploy', true) ~ '/' ~ user_collection_file }}"

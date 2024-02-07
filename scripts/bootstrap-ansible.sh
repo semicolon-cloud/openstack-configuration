@@ -22,7 +22,7 @@ set -e -u -x
 export HTTP_PROXY=${HTTP_PROXY:-""}
 export HTTPS_PROXY=${HTTPS_PROXY:-""}
 # The Ansible version used for testing
-export ANSIBLE_PACKAGE=${ANSIBLE_PACKAGE:-"ansible-core==2.13.8"}
+export ANSIBLE_PACKAGE=${ANSIBLE_PACKAGE:-"ansible-core==2.15.5"}
 export ANSIBLE_ROLE_FILE=${ANSIBLE_ROLE_FILE:-"ansible-role-requirements.yml"}
 export ANSIBLE_COLLECTION_FILE=${ANSIBLE_COLLECTION_FILE:-"ansible-collection-requirements.yml"}
 export USER_ROLE_FILE=${USER_ROLE_FILE:-"user-role-requirements.yml"}
@@ -104,7 +104,7 @@ case ${DISTRO_ID} in
     ubuntu|debian)
         apt-get update
         DEBIAN_FRONTEND=noninteractive apt-get -y install \
-          git-core curl gcc netcat \
+          git-core curl gcc \
           libssl-dev libffi-dev \
           libsystemd-dev pkg-config \
           wget
@@ -187,45 +187,47 @@ echo "openstack-ansible wrapper created."
 [[ -d "/etc/ansible/plugins" ]] && rm -rf "/etc/ansible/plugins"
 
 # Update dependent roles
-if [ -f "${ANSIBLE_ROLE_FILE}" ] && [[ -z "${SKIP_OSA_ROLE_CLONE+defined}" ]]; then
-    # NOTE(cloudnull): When bootstrapping we don't want ansible to interact
-    #                  with our plugins by default. This change will force
-    #                  ansible to ignore our plugins during this process.
-    export ANSIBLE_LIBRARY="${OSA_CLONE_DIR}/playbooks/library"
-    export ANSIBLE_LOOKUP_PLUGINS="/dev/null"
-    export ANSIBLE_FILTER_PLUGINS="/dev/null"
-    export ANSIBLE_ACTION_PLUGINS="/dev/null"
-    export ANSIBLE_CALLBACK_PLUGINS="/dev/null"
-    export ANSIBLE_CALLBACKS_ENABLED="/dev/null"
-    export ANSIBLE_TEST_PLUGINS="/dev/null"
-    export ANSIBLE_VARS_PLUGINS="/dev/null"
-    export ANSIBLE_STRATEGY_PLUGINS="/dev/null"
-    export ANSIBLE_CONFIG="none-ansible.cfg"
-    export ANSIBLE_COLLECTIONS_PATH="/etc/ansible"
-    export ANSIBLE_TRANSPORT="smart"
-    export ANSIBLE_STRATEGY="linear"
+# NOTE(cloudnull): When bootstrapping we don't want ansible to interact
+#                  with our plugins by default. This change will force
+#                  ansible to ignore our plugins during this process.
+export ANSIBLE_LIBRARY="${OSA_CLONE_DIR}/playbooks/library"
+export ANSIBLE_LOOKUP_PLUGINS="/dev/null"
+export ANSIBLE_FILTER_PLUGINS="/dev/null"
+export ANSIBLE_ACTION_PLUGINS="/dev/null"
+export ANSIBLE_CALLBACK_PLUGINS="/dev/null"
+export ANSIBLE_CALLBACKS_ENABLED="/dev/null"
+export ANSIBLE_TEST_PLUGINS="/dev/null"
+export ANSIBLE_VARS_PLUGINS="/dev/null"
+export ANSIBLE_STRATEGY_PLUGINS="/dev/null"
+export ANSIBLE_CONFIG="none-ansible.cfg"
+export ANSIBLE_COLLECTIONS_PATH="/etc/ansible"
+export ANSIBLE_TRANSPORT="smart"
+export ANSIBLE_STRATEGY="linear"
 
-    pushd scripts
+pushd scripts
+if ([ -f "${ANSIBLE_COLLECTION_FILE}" ] || [ -f "${USER_COLLECTION_FILE}" ]) && [[ -z "${SKIP_OSA_COLLECTION_CLONE+defined}" ]]; then
       /opt/ansible-runtime/bin/ansible-playbook get-ansible-collection-requirements.yml \
                        -e collection_file="${ANSIBLE_COLLECTION_FILE}" -e user_collection_file="${USER_COLLECTION_FILE}"
+fi
 
+if ([ -f "${ANSIBLE_ROLE_FILE}" ] || [ -f "${USER_ROLE_FILE}" ]) && [[ -z "${SKIP_OSA_ROLE_CLONE+defined}" ]]; then
       /opt/ansible-runtime/bin/ansible-playbook get-ansible-role-requirements.yml \
                        -e role_file="${ANSIBLE_ROLE_FILE}" -e user_role_file="${USER_ROLE_FILE}"
-    popd
-
-    unset ANSIBLE_LIBRARY
-    unset ANSIBLE_LOOKUP_PLUGINS
-    unset ANSIBLE_FILTER_PLUGINS
-    unset ANSIBLE_ACTION_PLUGINS
-    unset ANSIBLE_CALLBACK_PLUGINS
-    unset ANSIBLE_CALLBACKS_ENABLED
-    unset ANSIBLE_TEST_PLUGINS
-    unset ANSIBLE_VARS_PLUGINS
-    unset ANSIBLE_STRATEGY_PLUGINS
-    unset ANSIBLE_CONFIG
-    unset ANSIBLE_COLLECTIONS_PATH
-    unset ANSIBLE_TRANSPORT
-    unset ANSIBLE_STRATEGY
 fi
+popd
+
+unset ANSIBLE_LIBRARY
+unset ANSIBLE_LOOKUP_PLUGINS
+unset ANSIBLE_FILTER_PLUGINS
+unset ANSIBLE_ACTION_PLUGINS
+unset ANSIBLE_CALLBACK_PLUGINS
+unset ANSIBLE_CALLBACKS_ENABLED
+unset ANSIBLE_TEST_PLUGINS
+unset ANSIBLE_VARS_PLUGINS
+unset ANSIBLE_STRATEGY_PLUGINS
+unset ANSIBLE_CONFIG
+unset ANSIBLE_COLLECTIONS_PATH
+unset ANSIBLE_TRANSPORT
+unset ANSIBLE_STRATEGY
 
 echo "System is bootstrapped and ready for use."

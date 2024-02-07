@@ -10,7 +10,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
+# UPGRADE_TARGET_BRANCH variable is defined only during upgrade scenario
+# when source version is being deployed.
 {% if lookup('env', 'UPGRADE_TARGET_BRANCH') == '' %}
 # Make sure that TLS is fully enabled on target release.
 openstack_service_publicuri_proto: https
