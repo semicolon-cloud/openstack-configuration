@@ -197,7 +197,6 @@ install_method: source
 # Keepalived default IP address used to check its alive status (IPv4 only)
 # keepalived_external_ping_address: "193.0.14.129"
 # keepalived_internal_ping_address: "193.0.14.129"
-<<<<<<< HEAD
 neutron_plugin_type: ml2.ovn
 
 neutron_plugin_base:
