@@ -215,7 +215,7 @@ zun_virt_type: lxd
 
 # user_requirements_git_url: https://raw.githubusercontent.com/semicolon-cloud/openstack-requirements/stable/2023.1-better/upper-constraints.txt
 # Dude
-requirements_git_install_branch: e3c5bff0b26ffc6388ce0c72388b1b9b41f7f2e8
+# requirements_git_install_branch: e3c5bff0b26ffc6388ce0c72388b1b9b41f7f2e8
 zun_kuryr_system_user_name: root
 zun_kuryr_system_group_name: root
 
