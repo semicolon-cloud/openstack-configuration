@@ -37,5 +37,5 @@ cinder_backends:
 
 # $$NOVA
 nova_git_repo: "https://github.com/semicolon-cloud/openstack-nova/"
-nova_git_install_branch: 33cd9f26c7fb85bc0dd5785da399e22b38e86d00
+nova_git_install_branch: 7c9ee04dbefa13ff6417a18801fc679e73b35585
 nova_git_track_branch: stable/2023.2-semicolon

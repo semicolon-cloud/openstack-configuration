@@ -361,7 +361,7 @@ designate_pools_yaml:
       - hostname: ns1.seda.club.
         priority: 1
     nameservers:
-      - host: external.seda.club
+      - host: 211.139.146.32
         port: 53
     targets:
       - type: bind9
