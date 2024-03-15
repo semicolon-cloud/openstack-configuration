@@ -342,9 +342,9 @@ designate_pools_yaml:
         masters:
           - host: 172.29.237.96
             port: 5354
-          - host: 172.29.237.240
+          - host: 172.29.239.240
             port: 5354
-          - host: 172.29.237.184
+          - host: 172.29.239.184
             port: 5354
         options:
           host: 172.29.236.1
@@ -369,9 +369,9 @@ designate_pools_yaml:
         masters:
           - host: 172.29.237.96
             port: 5354
-          - host: 172.29.237.240
+          - host: 172.29.239.240
             port: 5354
-          - host: 172.29.237.184
+          - host: 172.29.239.184
             port: 5354
         options:
           host: 172.29.236.1
