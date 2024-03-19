@@ -1,3 +1,6 @@
+# INSTALLING ELK WAS A MISTAKE. DONT DO IT
+
+
 Install ELK with beats to gather metrics
 ########################################
 :tags: openstack, ansible
