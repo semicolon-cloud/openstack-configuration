@@ -316,21 +316,21 @@ grafana_datasources:
       maxConcurrentShardRequests: 256
       timeField: "@timestamp"
       timeInterval: ">10s"
-  - name: "heartbeat-Elasticsearch"
-    type: "elasticsearch"
-    access: "proxy"
-    url: "{{ elastic_vip_url }}"
-    basicAuth: false
-    basicAuthUser: ""
-    basicAuthPassword: ""
-    isDefault: false
-    database: "heartbeat-*"
-    jsonData:
-      esVersion: 56
-      keepCookies: []
-      maxConcurrentShardRequests: 256
-      timeField: "@timestamp"
-      timeInterval: ">10s"
+  # - name: "heartbeat-Elasticsearch"
+  #   type: "elasticsearch"
+  #   access: "proxy"
+  #   url: "{{ elastic_vip_url }}"
+  #   basicAuth: false
+  #   basicAuthUser: ""
+  #   basicAuthPassword: ""
+  #   isDefault: false
+  #   database: "heartbeat-*"
+  #   jsonData:
+  #     esVersion: 56
+  #     keepCookies: []
+  #     maxConcurrentShardRequests: 256
+  #     timeField: "@timestamp"
+  #     timeInterval: ">10s"
   # - name: "metricbeat-Elasticsearch"
   #   type: "elasticsearch"
   #   access: "proxy"
