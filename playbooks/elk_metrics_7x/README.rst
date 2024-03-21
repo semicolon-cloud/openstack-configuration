@@ -1,4 +1,6 @@
-# INSTALLING ELK WAS A MISTAKE. DONT DO IT
+## COmmon issues
+- After installing apm server, go into the server containers and setup file permissiobsn correctly based on log output. 
+
 
 
 Install ELK with beats to gather metrics
