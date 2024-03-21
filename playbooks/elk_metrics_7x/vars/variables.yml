@@ -468,3 +468,5 @@ elastic_heap_size: 2048
 
 
 filebeat_auditd_enabled: false
+filebeat_nginx_enabled: false
+filebeat_ceph_enabled: false
